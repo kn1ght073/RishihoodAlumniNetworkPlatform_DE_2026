@@ -1,0 +1,11 @@
+{
+  "team_number": "T0079",
+  "group_lead": { "name": "Jai Shastri", "enrollment_no": "2501010689", "github": "kn1ght073" },
+  "members": [
+    { "name": "Darsh Rustagi", "enrollment_no": "2501010558", "github": "darshr25558-pixel" },
+    { "name": "Vansh Kushwaha", "enrollment_no": "2501010495", "github": "vanshkw" },
+    { "name": "Chayan Leekha", "enrollment_no": "2501010123", "github": "chayanlekha-blip" }
+  ],
+  "postgres_version": "18.6",
+  "laptop_used_for_benchmarks": "Apple MacBook Pro (M4 chip, 10-core GPU, 16GB RAM, macOS 27.2)"
+}

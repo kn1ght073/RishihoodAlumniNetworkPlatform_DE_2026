@@ -22,12 +22,12 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead | Jai Shastri | 2501010689 | kn1ght073 |
+| Member 2 | Darsh Rustagi | 2501010558 | darshr25558-pixel |
+| Member 3 | Vansh Kushwaha | 2501010495 | vanshkw |
+| Member 4 | Chayan Leekha | 2501010123 | chayanlekha-blip |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0079 · **Section:** B · **Repository URL:** [Project Repo](https://github.com/kn1ght073/RishihoodAlumniNetworkPlatform_DE_2026)
 
 ---
 
