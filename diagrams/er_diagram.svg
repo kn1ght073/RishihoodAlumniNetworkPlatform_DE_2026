@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1440" viewBox="0 0 1900 1440" font-family="Helvetica, Arial, sans-serif">
+<rect width="1900" height="1440" fill="#ffffff"/>
+<text x="60" y="1395" font-size="20" font-weight="bold" fill="#0f172a">Housing.com Property Search Database &#8212; ER Diagram (Team T0079, crow&#8217;s foot notation)</text>
+<text x="60" y="1420" font-size="12" fill="#475569">12 tables in schema &#8220;housing&#8221;. project_amenities and shortlists are bridge tables implementing M:N relationships. properties.project_id is nullable (0..1): standalone houses, villas and plots.</text>
+<g>
+<rect x="60" y="80" width="280" height="106" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="60" y="80" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="60" y="108" width="280" height="6" fill="#1f3b57"/>
+<text x="200.0" y="102" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">cities</text>
+<text x="72" y="130" font-size="13" fill="#0f172a" font-weight="bold">city_id</text>
+<text x="330" y="130" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="61" y="138" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="154" font-size="13" fill="#0f172a">city_name</text>
+<text x="330" y="154" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<text x="72" y="178" font-size="13" fill="#0f172a">state</text>
+</g>
+<g>
+<rect x="60" y="300" width="280" height="178" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="60" y="300" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="60" y="328" width="280" height="6" fill="#1f3b57"/>
+<text x="200.0" y="322" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">localities</text>
+<text x="72" y="350" font-size="13" fill="#0f172a" font-weight="bold">locality_id</text>
+<text x="330" y="350" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="61" y="358" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="374" font-size="13" fill="#0f172a">city_id</text>
+<text x="330" y="374" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="72" y="398" font-size="13" fill="#0f172a">locality_name</text>
+<rect x="61" y="406" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="422" font-size="13" fill="#0f172a">pincode</text>
+<text x="72" y="446" font-size="13" fill="#0f172a">center_lat</text>
+<rect x="61" y="454" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="470" font-size="13" fill="#0f172a">center_lng</text>
+</g>
+<g>
+<rect x="420" y="340" width="250" height="106" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="420" y="340" width="250" height="34" rx="4" fill="#1f3b57"/>
+<rect x="420" y="368" width="250" height="6" fill="#1f3b57"/>
+<text x="545.0" y="362" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">builders</text>
+<text x="432" y="390" font-size="13" fill="#0f172a" font-weight="bold">builder_id</text>
+<text x="660" y="390" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="421" y="398" width="248" height="24" fill="#eef2f7"/>
+<text x="432" y="414" font-size="13" fill="#0f172a">builder_name</text>
+<text x="660" y="414" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<text x="432" y="438" font-size="13" fill="#0f172a">founded_year</text>
+</g>
+<g>
+<rect x="420" y="80" width="300" height="226" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="420" y="80" width="300" height="34" rx="4" fill="#1f3b57"/>
+<rect x="420" y="108" width="300" height="6" fill="#1f3b57"/>
+<text x="570.0" y="102" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">projects</text>
+<text x="432" y="130" font-size="13" fill="#0f172a" font-weight="bold">project_id</text>
+<text x="710" y="130" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="421" y="138" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="154" font-size="13" fill="#0f172a">builder_id</text>
+<text x="710" y="154" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="432" y="178" font-size="13" fill="#0f172a">locality_id</text>
+<text x="710" y="178" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<rect x="421" y="186" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="202" font-size="13" fill="#0f172a">project_name</text>
+<text x="432" y="226" font-size="13" fill="#0f172a">rera_id</text>
+<text x="710" y="226" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<rect x="421" y="234" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="250" font-size="13" fill="#0f172a">possession_status</text>
+<text x="432" y="274" font-size="13" fill="#0f172a">possession_date</text>
+<rect x="421" y="282" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="298" font-size="13" fill="#0f172a">total_units</text>
+</g>
+<g>
+<rect x="1150" y="80" width="300" height="202" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="1150" y="80" width="300" height="34" rx="4" fill="#1f3b57"/>
+<rect x="1150" y="108" width="300" height="6" fill="#1f3b57"/>
+<text x="1300.0" y="102" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">users</text>
+<text x="1162" y="130" font-size="13" fill="#0f172a" font-weight="bold">user_id</text>
+<text x="1440" y="130" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="1151" y="138" width="298" height="24" fill="#eef2f7"/>
+<text x="1162" y="154" font-size="13" fill="#0f172a">full_name</text>
+<text x="1162" y="178" font-size="13" fill="#0f172a">phone</text>
+<text x="1440" y="178" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<rect x="1151" y="186" width="298" height="24" fill="#eef2f7"/>
+<text x="1162" y="202" font-size="13" fill="#0f172a">email</text>
+<text x="1440" y="202" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<text x="1162" y="226" font-size="13" fill="#0f172a">user_type</text>
+<rect x="1151" y="234" width="298" height="24" fill="#eef2f7"/>
+<text x="1162" y="250" font-size="13" fill="#0f172a">agent_rera_id</text>
+<text x="1440" y="250" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+<text x="1162" y="274" font-size="13" fill="#0f172a">created_at</text>
+</g>
+<g>
+<rect x="1550" y="80" width="240" height="82" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="1550" y="80" width="240" height="34" rx="4" fill="#1f3b57"/>
+<rect x="1550" y="108" width="240" height="6" fill="#1f3b57"/>
+<text x="1670.0" y="102" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">amenities</text>
+<text x="1562" y="130" font-size="13" fill="#0f172a" font-weight="bold">amenity_id</text>
+<text x="1780" y="130" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="1551" y="138" width="238" height="24" fill="#eef2f7"/>
+<text x="1562" y="154" font-size="13" fill="#0f172a">amenity_name</text>
+<text x="1780" y="154" font-size="11" font-weight="bold" fill="#047857" text-anchor="end">UK</text>
+</g>
+<g>
+<rect x="1150" y="340" width="300" height="82" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="1150" y="340" width="300" height="34" rx="4" fill="#1f3b57"/>
+<rect x="1150" y="368" width="300" height="6" fill="#1f3b57"/>
+<text x="1300.0" y="362" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">project_amenities</text>
+<text x="1162" y="390" font-size="13" fill="#0f172a" font-weight="bold">project_id</text>
+<text x="1440" y="390" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK FK</text>
+<rect x="1151" y="398" width="298" height="24" fill="#eef2f7"/>
+<text x="1162" y="414" font-size="13" fill="#0f172a" font-weight="bold">amenity_id</text>
+<text x="1440" y="414" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK FK</text>
+</g>
+<g>
+<rect x="420" y="560" width="300" height="538" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="420" y="560" width="300" height="34" rx="4" fill="#1f3b57"/>
+<rect x="420" y="588" width="300" height="6" fill="#1f3b57"/>
+<text x="570.0" y="582" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">properties</text>
+<text x="432" y="610" font-size="13" fill="#0f172a" font-weight="bold">property_id</text>
+<text x="710" y="610" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="421" y="618" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="634" font-size="13" fill="#0f172a">listed_by</text>
+<text x="710" y="634" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="432" y="658" font-size="13" fill="#0f172a">project_id</text>
+<text x="710" y="658" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK 0..1</text>
+<rect x="421" y="666" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="682" font-size="13" fill="#0f172a">locality_id</text>
+<text x="710" y="682" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="432" y="706" font-size="13" fill="#0f172a">listing_type</text>
+<rect x="421" y="714" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="730" font-size="13" fill="#0f172a">property_type</text>
+<text x="432" y="754" font-size="13" fill="#0f172a">bhk</text>
+<rect x="421" y="762" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="778" font-size="13" fill="#0f172a">carpet_area_sqft</text>
+<text x="432" y="802" font-size="13" fill="#0f172a">floor_no</text>
+<rect x="421" y="810" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="826" font-size="13" fill="#0f172a">total_floors</text>
+<text x="432" y="850" font-size="13" fill="#0f172a">furnishing</text>
+<rect x="421" y="858" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="874" font-size="13" fill="#0f172a">facing</text>
+<text x="432" y="898" font-size="13" fill="#0f172a">price</text>
+<rect x="421" y="906" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="922" font-size="13" fill="#0f172a">maintenance_monthly</text>
+<text x="432" y="946" font-size="13" fill="#0f172a">security_deposit</text>
+<rect x="421" y="954" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="970" font-size="13" fill="#0f172a">available_from</text>
+<text x="432" y="994" font-size="13" fill="#0f172a">latitude</text>
+<rect x="421" y="1002" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="1018" font-size="13" fill="#0f172a">longitude</text>
+<text x="432" y="1042" font-size="13" fill="#0f172a">is_verified</text>
+<rect x="421" y="1050" width="298" height="24" fill="#eef2f7"/>
+<text x="432" y="1066" font-size="13" fill="#0f172a">status</text>
+<text x="432" y="1090" font-size="13" fill="#0f172a">posted_at</text>
+</g>
+<g>
+<rect x="60" y="1180" width="280" height="154" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="60" y="1180" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="60" y="1208" width="280" height="6" fill="#1f3b57"/>
+<text x="200.0" y="1202" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">price_changes</text>
+<text x="72" y="1230" font-size="13" fill="#0f172a" font-weight="bold">change_id</text>
+<text x="330" y="1230" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="61" y="1238" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="1254" font-size="13" fill="#0f172a">property_id</text>
+<text x="330" y="1254" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="72" y="1278" font-size="13" fill="#0f172a">old_price</text>
+<rect x="61" y="1286" width="278" height="24" fill="#eef2f7"/>
+<text x="72" y="1302" font-size="13" fill="#0f172a">new_price</text>
+<text x="72" y="1326" font-size="13" fill="#0f172a">changed_at</text>
+</g>
+<g>
+<rect x="500" y="1180" width="280" height="178" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="500" y="1180" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="500" y="1208" width="280" height="6" fill="#1f3b57"/>
+<text x="640.0" y="1202" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">enquiries</text>
+<text x="512" y="1230" font-size="13" fill="#0f172a" font-weight="bold">enquiry_id</text>
+<text x="770" y="1230" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="501" y="1238" width="278" height="24" fill="#eef2f7"/>
+<text x="512" y="1254" font-size="13" fill="#0f172a">property_id</text>
+<text x="770" y="1254" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="512" y="1278" font-size="13" fill="#0f172a">user_id</text>
+<text x="770" y="1278" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<rect x="501" y="1286" width="278" height="24" fill="#eef2f7"/>
+<text x="512" y="1302" font-size="13" fill="#0f172a">channel</text>
+<text x="512" y="1326" font-size="13" fill="#0f172a">message</text>
+<rect x="501" y="1334" width="278" height="24" fill="#eef2f7"/>
+<text x="512" y="1350" font-size="13" fill="#0f172a">created_at</text>
+</g>
+<g>
+<rect x="940" y="1180" width="280" height="178" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="940" y="1180" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="940" y="1208" width="280" height="6" fill="#1f3b57"/>
+<text x="1080.0" y="1202" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">site_visits</text>
+<text x="952" y="1230" font-size="13" fill="#0f172a" font-weight="bold">visit_id</text>
+<text x="1210" y="1230" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK</text>
+<rect x="941" y="1238" width="278" height="24" fill="#eef2f7"/>
+<text x="952" y="1254" font-size="13" fill="#0f172a">property_id</text>
+<text x="1210" y="1254" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<text x="952" y="1278" font-size="13" fill="#0f172a">user_id</text>
+<text x="1210" y="1278" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="end">FK</text>
+<rect x="941" y="1286" width="278" height="24" fill="#eef2f7"/>
+<text x="952" y="1302" font-size="13" fill="#0f172a">scheduled_at</text>
+<text x="952" y="1326" font-size="13" fill="#0f172a">status</text>
+<rect x="941" y="1334" width="278" height="24" fill="#eef2f7"/>
+<text x="952" y="1350" font-size="13" fill="#0f172a">feedback_rating</text>
+</g>
+<g>
+<rect x="1380" y="1180" width="280" height="106" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<rect x="1380" y="1180" width="280" height="34" rx="4" fill="#1f3b57"/>
+<rect x="1380" y="1208" width="280" height="6" fill="#1f3b57"/>
+<text x="1520.0" y="1202" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">shortlists</text>
+<text x="1392" y="1230" font-size="13" fill="#0f172a" font-weight="bold">user_id</text>
+<text x="1650" y="1230" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK FK</text>
+<rect x="1381" y="1238" width="278" height="24" fill="#eef2f7"/>
+<text x="1392" y="1254" font-size="13" fill="#0f172a" font-weight="bold">property_id</text>
+<text x="1650" y="1254" font-size="11" font-weight="bold" fill="#b45309" text-anchor="end">PK FK</text>
+<text x="1392" y="1278" font-size="13" fill="#0f172a">added_at</text>
+</g>
+<g><polyline points="200,186 200,300" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="286.0" x2="202.8" y2="305.3" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="286.0" x2="200.0" y2="306.0" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="286.0" x2="197.2" y2="305.3" stroke="#334155" stroke-width="1.6"/><circle cx="200.0" cy="277.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="193.0" y1="194.0" x2="207.0" y2="194.0" stroke="#334155" stroke-width="1.6"/><line x1="193.0" y1="203.0" x2="207.0" y2="203.0" stroke="#334155" stroke-width="1.6"/><text x="186.0" y="243.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">has</text></g>
+<g><polyline points="340,350 372,350 372,193 420,193" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="193.0" x2="425.3" y2="190.2" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="193.0" x2="426.0" y2="193.0" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="193.0" x2="425.3" y2="195.8" stroke="#334155" stroke-width="1.6"/><circle cx="397.0" cy="193.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="348.0" y1="357.0" x2="348.0" y2="343.0" stroke="#334155" stroke-width="1.6"/><line x1="357.0" y1="357.0" x2="357.0" y2="343.0" stroke="#334155" stroke-width="1.6"/><text x="396.0" y="185.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">in</text></g>
+<g><polyline points="570,306 570,340" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="570.0" y1="326.0" x2="572.8" y2="345.3" stroke="#334155" stroke-width="1.6"/><line x1="570.0" y1="326.0" x2="570.0" y2="346.0" stroke="#334155" stroke-width="1.6"/><line x1="570.0" y1="326.0" x2="567.2" y2="345.3" stroke="#334155" stroke-width="1.6"/><circle cx="570.0" cy="317.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="563.0" y1="314.0" x2="577.0" y2="314.0" stroke="#334155" stroke-width="1.6"/><line x1="563.0" y1="323.0" x2="577.0" y2="323.0" stroke="#334155" stroke-width="1.6"/><text x="582.0" y="323.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">develops</text></g>
+<g><polyline points="340,420 390,420 390,700 420,700" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="700.0" x2="425.3" y2="697.2" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="700.0" x2="426.0" y2="700.0" stroke="#334155" stroke-width="1.6"/><line x1="406.0" y1="700.0" x2="425.3" y2="702.8" stroke="#334155" stroke-width="1.6"/><circle cx="397.0" cy="700.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="348.0" y1="427.0" x2="348.0" y2="413.0" stroke="#334155" stroke-width="1.6"/><line x1="357.0" y1="427.0" x2="357.0" y2="413.0" stroke="#334155" stroke-width="1.6"/><text x="390.0" y="552.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">in</text></g>
+<g><polyline points="700,306 700,560" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="700.0" y1="546.0" x2="702.8" y2="565.3" stroke="#334155" stroke-width="1.6"/><line x1="700.0" y1="546.0" x2="700.0" y2="566.0" stroke="#334155" stroke-width="1.6"/><line x1="700.0" y1="546.0" x2="697.2" y2="565.3" stroke="#334155" stroke-width="1.6"/><circle cx="700.0" cy="537.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="693.0" y1="314.0" x2="707.0" y2="314.0" stroke="#334155" stroke-width="1.6"/><line x1="693.0" y1="323.0" x2="707.0" y2="323.0" stroke="#334155" stroke-width="1.6"/><circle cx="700.0" cy="332.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><text x="714.0" y="433.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">unit of</text></g>
+<g><polyline points="720,250 880,250 880,400 1150,400" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1136.0" y1="400.0" x2="1155.3" y2="397.2" stroke="#334155" stroke-width="1.6"/><line x1="1136.0" y1="400.0" x2="1156.0" y2="400.0" stroke="#334155" stroke-width="1.6"/><line x1="1136.0" y1="400.0" x2="1155.3" y2="402.8" stroke="#334155" stroke-width="1.6"/><circle cx="1127.0" cy="400.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="728.0" y1="257.0" x2="728.0" y2="243.0" stroke="#334155" stroke-width="1.6"/><line x1="737.0" y1="257.0" x2="737.0" y2="243.0" stroke="#334155" stroke-width="1.6"/><text x="800.0" y="242.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">offers</text></g>
+<g><polyline points="1550,120 1500,120 1500,381 1450,381" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1464.0" y1="381.0" x2="1444.7" y2="383.8" stroke="#334155" stroke-width="1.6"/><line x1="1464.0" y1="381.0" x2="1444.0" y2="381.0" stroke="#334155" stroke-width="1.6"/><line x1="1464.0" y1="381.0" x2="1444.7" y2="378.2" stroke="#334155" stroke-width="1.6"/><circle cx="1473.0" cy="381.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="1542.0" y1="113.0" x2="1542.0" y2="127.0" stroke="#334155" stroke-width="1.6"/><line x1="1533.0" y1="113.0" x2="1533.0" y2="127.0" stroke="#334155" stroke-width="1.6"/><text x="1508.0" y="250.5" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">offers</text></g>
+<g><polyline points="1150,200 1000,200 1000,600 720,600" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="734.0" y1="600.0" x2="714.7" y2="602.8" stroke="#334155" stroke-width="1.6"/><line x1="734.0" y1="600.0" x2="714.0" y2="600.0" stroke="#334155" stroke-width="1.6"/><line x1="734.0" y1="600.0" x2="714.7" y2="597.2" stroke="#334155" stroke-width="1.6"/><circle cx="743.0" cy="600.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="1142.0" y1="193.0" x2="1142.0" y2="207.0" stroke="#334155" stroke-width="1.6"/><line x1="1133.0" y1="193.0" x2="1133.0" y2="207.0" stroke="#334155" stroke-width="1.6"/><text x="1000.0" y="392.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">lists</text></g>
+<g><polyline points="420,1080 200,1080 200,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="1166.0" x2="202.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="1166.0" x2="200.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="200.0" y1="1166.0" x2="197.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="200.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="412.0" y1="1073.0" x2="412.0" y2="1087.0" stroke="#334155" stroke-width="1.6"/><line x1="403.0" y1="1073.0" x2="403.0" y2="1087.0" stroke="#334155" stroke-width="1.6"/><text x="310.0" y="1072.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">reprices</text></g>
+<g><polyline points="570,1098 560,1098 560,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="560.0" y1="1166.0" x2="562.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="560.0" y1="1166.0" x2="560.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="560.0" y1="1166.0" x2="557.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="560.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="562.0" y1="1091.0" x2="562.0" y2="1105.0" stroke="#334155" stroke-width="1.6"/><line x1="553.0" y1="1091.0" x2="553.0" y2="1105.0" stroke="#334155" stroke-width="1.6"/><text x="518.0" y="1139.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">receives</text></g>
+<g><polyline points="700,1098 700,1154 1080,1154 1080,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1080.0" y1="1166.0" x2="1082.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="1080.0" y1="1166.0" x2="1080.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="1080.0" y1="1166.0" x2="1077.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="1080.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="693.0" y1="1106.0" x2="707.0" y2="1106.0" stroke="#334155" stroke-width="1.6"/><line x1="693.0" y1="1115.0" x2="707.0" y2="1115.0" stroke="#334155" stroke-width="1.6"/><text x="890.0" y="1146.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">hosts</text></g>
+<g><polyline points="680,1098 680,1176 1520,1176 1520,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1520.0" y1="1166.0" x2="1522.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="1520.0" y1="1166.0" x2="1520.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="1520.0" y1="1166.0" x2="1517.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="1520.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="673.0" y1="1106.0" x2="687.0" y2="1106.0" stroke="#334155" stroke-width="1.6"/><line x1="673.0" y1="1115.0" x2="687.0" y2="1115.0" stroke="#334155" stroke-width="1.6"/><text x="1100.0" y="1168.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">saved in</text></g>
+<g><polyline points="1450,80 1450,65 1840,65 1840,1148 760,1148 760,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="760.0" y1="1166.0" x2="762.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="760.0" y1="1166.0" x2="760.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="760.0" y1="1166.0" x2="757.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="760.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="1457.0" y1="72.0" x2="1443.0" y2="72.0" stroke="#334155" stroke-width="1.6"/><line x1="1457.0" y1="63.0" x2="1443.0" y2="63.0" stroke="#334155" stroke-width="1.6"/><text x="1840.0" y="598.5" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">makes</text></g>
+<g><polyline points="1350,80 1350,50 1870,50 1870,1162 1150,1162 1150,1180" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1150.0" y1="1166.0" x2="1152.8" y2="1185.3" stroke="#334155" stroke-width="1.6"/><line x1="1150.0" y1="1166.0" x2="1150.0" y2="1186.0" stroke="#334155" stroke-width="1.6"/><line x1="1150.0" y1="1166.0" x2="1147.2" y2="1185.3" stroke="#334155" stroke-width="1.6"/><circle cx="1150.0" cy="1157.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="1357.0" y1="72.0" x2="1343.0" y2="72.0" stroke="#334155" stroke-width="1.6"/><line x1="1357.0" y1="63.0" x2="1343.0" y2="63.0" stroke="#334155" stroke-width="1.6"/><text x="1870.0" y="598.0" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">books</text></g>
+<g><polyline points="1250,80 1250,30 1890,30 1890,1233 1660,1233" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="1674.0" y1="1233.0" x2="1654.7" y2="1235.8" stroke="#334155" stroke-width="1.6"/><line x1="1674.0" y1="1233.0" x2="1654.0" y2="1233.0" stroke="#334155" stroke-width="1.6"/><line x1="1674.0" y1="1233.0" x2="1654.7" y2="1230.2" stroke="#334155" stroke-width="1.6"/><circle cx="1683.0" cy="1233.0" r="4" fill="#ffffff" stroke="#334155" stroke-width="1.4"/><line x1="1257.0" y1="72.0" x2="1243.0" y2="72.0" stroke="#334155" stroke-width="1.6"/><line x1="1257.0" y1="63.0" x2="1243.0" y2="63.0" stroke="#334155" stroke-width="1.6"/><text x="1890.0" y="623.5" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle">saves</text></g>
+<rect x="1180" y="1363" width="660" height="52" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="1192" y="1385" font-size="12" fill="#0f172a">&#8214; exactly one&#160;&#160;&#160;&#160; &#967;&#8214; zero or one&#160;&#160;&#160;&#160; crow&#8217;s foot + &#967; = zero or many</text>
+<text x="1192" y="1405" font-size="12" fill="#0f172a">PK = primary key&#160;&#160; FK = foreign key&#160;&#160; UK = unique key&#160;&#160;&#160;&#160;&#160;&#160;e.g. LOCALITIES &#8214;&#8212;o{ PROPERTIES : each property is in exactly one locality; a locality has many properties</text>
+</svg>
