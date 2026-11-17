@@ -1,0 +1,48 @@
+=== R11 run 1 ===
+GroupAggregate  (cost=4197.28..4197.63 rows=8 width=81) (actual time=9.461..9.465 rows=8 loops=1)
+  Group Key: bhk, listing_type
+  Buffers: shared hit=2402
+  ->  Sort  (cost=4197.28..4197.32 rows=18 width=15) (actual time=9.453..9.454 rows=19 loops=1)
+        Sort Key: bhk, listing_type
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=2402
+        ->  Seq Scan on properties  (cost=0.00..4196.90 rows=18 width=15) (actual time=0.547..9.435 rows=19 loops=1)
+              Filter: ((project_id = 217) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 120041
+              Buffers: shared hit=2396
+Planning:
+  Buffers: shared hit=110
+Planning Time: 0.145 ms
+Execution Time: 9.484 ms
+=== R11 run 2 ===
+GroupAggregate  (cost=4197.28..4197.63 rows=8 width=81) (actual time=9.666..9.670 rows=8 loops=1)
+  Group Key: bhk, listing_type
+  Buffers: shared hit=2402
+  ->  Sort  (cost=4197.28..4197.32 rows=18 width=15) (actual time=9.657..9.658 rows=19 loops=1)
+        Sort Key: bhk, listing_type
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=2402
+        ->  Seq Scan on properties  (cost=0.00..4196.90 rows=18 width=15) (actual time=0.531..9.641 rows=19 loops=1)
+              Filter: ((project_id = 217) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 120041
+              Buffers: shared hit=2396
+Planning:
+  Buffers: shared hit=110
+Planning Time: 0.165 ms
+Execution Time: 9.690 ms
+=== R11 run 3 ===
+GroupAggregate  (cost=4197.28..4197.63 rows=8 width=81) (actual time=9.330..9.334 rows=8 loops=1)
+  Group Key: bhk, listing_type
+  Buffers: shared hit=2402
+  ->  Sort  (cost=4197.28..4197.32 rows=18 width=15) (actual time=9.321..9.322 rows=19 loops=1)
+        Sort Key: bhk, listing_type
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=2402
+        ->  Seq Scan on properties  (cost=0.00..4196.90 rows=18 width=15) (actual time=0.566..9.305 rows=19 loops=1)
+              Filter: ((project_id = 217) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 120041
+              Buffers: shared hit=2396
+Planning:
+  Buffers: shared hit=110
+Planning Time: 0.178 ms
+Execution Time: 9.355 ms
