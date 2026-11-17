@@ -1,0 +1,141 @@
+=== R21 run 1 ===
+Sort  (cost=5830.37..5830.45 rows=33 width=49) (actual time=9.626..10.017 rows=100 loops=1)
+  Sort Key: (round(avg(v.feedback_rating), 2)) DESC
+  Sort Method: quicksort  Memory: 32kB
+  Buffers: shared hit=3001
+  ->  Finalize GroupAggregate  (cost=5815.70..5829.53 rows=33 width=49) (actual time=9.536..9.997 rows=100 loops=1)
+        Group Key: l.locality_name
+        Filter: (count(*) >= 10)
+        Buffers: shared hit=2998
+        ->  Gather Merge  (cost=5815.70..5827.20 rows=100 width=49) (actual time=9.530..9.954 rows=200 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2998
+              ->  Sort  (cost=4815.69..4815.94 rows=100 width=49) (actual time=8.445..8.447 rows=100 loops=2)
+                    Sort Key: l.locality_name
+                    Sort Method: quicksort  Memory: 39kB
+                    Buffers: shared hit=2998
+                    Worker 0:  Sort Method: quicksort  Memory: 39kB
+                    ->  Partial HashAggregate  (cost=4811.37..4812.37 rows=100 width=49) (actual time=8.331..8.337 rows=100 loops=2)
+                          Group Key: l.locality_name
+                          Batches: 1  Memory Usage: 48kB
+                          Buffers: shared hit=2990
+                          Worker 0:  Batches: 1  Memory Usage: 48kB
+                          ->  Hash Join  (cost=827.56..4746.39 rows=8664 width=11) (actual time=2.069..7.706 rows=7347 loops=2)
+                                Hash Cond: (p.locality_id = l.locality_id)
+                                Buffers: shared hit=2990
+                                ->  Hash Join  (cost=824.31..4719.43 rows=8664 width=6) (actual time=2.042..7.253 rows=7347 loops=2)
+                                      Hash Cond: (p.property_id = v.property_id)
+                                      Buffers: shared hit=2974
+                                      ->  Parallel Seq Scan on properties p  (cost=0.00..3102.24 rows=70624 width=8) (actual time=0.001..1.721 rows=60030 loops=2)
+                                            Buffers: shared hit=2396
+                                      ->  Hash  (cost=640.20..640.20 rows=14729 width=6) (actual time=2.020..2.020 rows=14694 loops=2)
+                                            Buckets: 16384  Batches: 1  Memory Usage: 702kB
+                                            Buffers: shared hit=578
+                                            ->  Seq Scan on site_visits v  (cost=0.00..640.20 rows=14729 width=6) (actual time=0.009..1.443 rows=14694 loops=2)
+                                                  Filter: (feedback_rating IS NOT NULL)
+                                                  Rows Removed by Filter: 20426
+                                                  Buffers: shared hit=578
+                                ->  Hash  (cost=2.00..2.00 rows=100 width=13) (actual time=0.020..0.021 rows=100 loops=2)
+                                      Buckets: 1024  Batches: 1  Memory Usage: 13kB
+                                      Buffers: shared hit=2
+                                      ->  Seq Scan on localities l  (cost=0.00..2.00 rows=100 width=13) (actual time=0.010..0.013 rows=100 loops=2)
+                                            Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=294
+Planning Time: 0.393 ms
+Execution Time: 10.058 ms
+=== R21 run 2 ===
+Sort  (cost=5830.37..5830.45 rows=33 width=49) (actual time=9.370..9.788 rows=100 loops=1)
+  Sort Key: (round(avg(v.feedback_rating), 2)) DESC
+  Sort Method: quicksort  Memory: 32kB
+  Buffers: shared hit=3001
+  ->  Finalize GroupAggregate  (cost=5815.70..5829.53 rows=33 width=49) (actual time=9.279..9.767 rows=100 loops=1)
+        Group Key: l.locality_name
+        Filter: (count(*) >= 10)
+        Buffers: shared hit=2998
+        ->  Gather Merge  (cost=5815.70..5827.20 rows=100 width=49) (actual time=9.274..9.724 rows=200 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2998
+              ->  Sort  (cost=4815.69..4815.94 rows=100 width=49) (actual time=8.390..8.392 rows=100 loops=2)
+                    Sort Key: l.locality_name
+                    Sort Method: quicksort  Memory: 39kB
+                    Buffers: shared hit=2998
+                    Worker 0:  Sort Method: quicksort  Memory: 39kB
+                    ->  Partial HashAggregate  (cost=4811.37..4812.37 rows=100 width=49) (actual time=8.276..8.281 rows=100 loops=2)
+                          Group Key: l.locality_name
+                          Batches: 1  Memory Usage: 48kB
+                          Buffers: shared hit=2990
+                          Worker 0:  Batches: 1  Memory Usage: 48kB
+                          ->  Hash Join  (cost=827.56..4746.39 rows=8664 width=11) (actual time=2.088..7.659 rows=7347 loops=2)
+                                Hash Cond: (p.locality_id = l.locality_id)
+                                Buffers: shared hit=2990
+                                ->  Hash Join  (cost=824.31..4719.43 rows=8664 width=6) (actual time=2.061..7.208 rows=7347 loops=2)
+                                      Hash Cond: (p.property_id = v.property_id)
+                                      Buffers: shared hit=2974
+                                      ->  Parallel Seq Scan on properties p  (cost=0.00..3102.24 rows=70624 width=8) (actual time=0.001..1.720 rows=60030 loops=2)
+                                            Buffers: shared hit=2396
+                                      ->  Hash  (cost=640.20..640.20 rows=14729 width=6) (actual time=2.040..2.040 rows=14694 loops=2)
+                                            Buckets: 16384  Batches: 1  Memory Usage: 702kB
+                                            Buffers: shared hit=578
+                                            ->  Seq Scan on site_visits v  (cost=0.00..640.20 rows=14729 width=6) (actual time=0.009..1.450 rows=14694 loops=2)
+                                                  Filter: (feedback_rating IS NOT NULL)
+                                                  Rows Removed by Filter: 20426
+                                                  Buffers: shared hit=578
+                                ->  Hash  (cost=2.00..2.00 rows=100 width=13) (actual time=0.021..0.021 rows=100 loops=2)
+                                      Buckets: 1024  Batches: 1  Memory Usage: 13kB
+                                      Buffers: shared hit=2
+                                      ->  Seq Scan on localities l  (cost=0.00..2.00 rows=100 width=13) (actual time=0.010..0.014 rows=100 loops=2)
+                                            Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=294
+Planning Time: 0.369 ms
+Execution Time: 9.827 ms
+=== R21 run 3 ===
+Sort  (cost=5830.37..5830.45 rows=33 width=49) (actual time=9.649..10.041 rows=100 loops=1)
+  Sort Key: (round(avg(v.feedback_rating), 2)) DESC
+  Sort Method: quicksort  Memory: 32kB
+  Buffers: shared hit=3001
+  ->  Finalize GroupAggregate  (cost=5815.70..5829.53 rows=33 width=49) (actual time=9.558..10.021 rows=100 loops=1)
+        Group Key: l.locality_name
+        Filter: (count(*) >= 10)
+        Buffers: shared hit=2998
+        ->  Gather Merge  (cost=5815.70..5827.20 rows=100 width=49) (actual time=9.552..9.971 rows=200 loops=1)
+              Workers Planned: 1
+              Workers Launched: 1
+              Buffers: shared hit=2998
+              ->  Sort  (cost=4815.69..4815.94 rows=100 width=49) (actual time=8.653..8.655 rows=100 loops=2)
+                    Sort Key: l.locality_name
+                    Sort Method: quicksort  Memory: 39kB
+                    Buffers: shared hit=2998
+                    Worker 0:  Sort Method: quicksort  Memory: 39kB
+                    ->  Partial HashAggregate  (cost=4811.37..4812.37 rows=100 width=49) (actual time=8.541..8.547 rows=100 loops=2)
+                          Group Key: l.locality_name
+                          Batches: 1  Memory Usage: 48kB
+                          Buffers: shared hit=2990
+                          Worker 0:  Batches: 1  Memory Usage: 48kB
+                          ->  Hash Join  (cost=827.56..4746.39 rows=8664 width=11) (actual time=2.276..7.920 rows=7347 loops=2)
+                                Hash Cond: (p.locality_id = l.locality_id)
+                                Buffers: shared hit=2990
+                                ->  Hash Join  (cost=824.31..4719.43 rows=8664 width=6) (actual time=2.250..7.469 rows=7347 loops=2)
+                                      Hash Cond: (p.property_id = v.property_id)
+                                      Buffers: shared hit=2974
+                                      ->  Parallel Seq Scan on properties p  (cost=0.00..3102.24 rows=70624 width=8) (actual time=0.001..1.724 rows=60030 loops=2)
+                                            Buffers: shared hit=2396
+                                      ->  Hash  (cost=640.20..640.20 rows=14729 width=6) (actual time=2.229..2.229 rows=14694 loops=2)
+                                            Buckets: 16384  Batches: 1  Memory Usage: 702kB
+                                            Buffers: shared hit=578
+                                            ->  Seq Scan on site_visits v  (cost=0.00..640.20 rows=14729 width=6) (actual time=0.009..1.616 rows=14694 loops=2)
+                                                  Filter: (feedback_rating IS NOT NULL)
+                                                  Rows Removed by Filter: 20426
+                                                  Buffers: shared hit=578
+                                ->  Hash  (cost=2.00..2.00 rows=100 width=13) (actual time=0.020..0.020 rows=100 loops=2)
+                                      Buckets: 1024  Batches: 1  Memory Usage: 13kB
+                                      Buffers: shared hit=2
+                                      ->  Seq Scan on localities l  (cost=0.00..2.00 rows=100 width=13) (actual time=0.009..0.013 rows=100 loops=2)
+                                            Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=294
+Planning Time: 0.364 ms
+Execution Time: 10.081 ms

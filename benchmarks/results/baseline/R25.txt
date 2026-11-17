@@ -1,0 +1,87 @@
+=== R25 run 1 ===
+GroupAggregate  (cost=5566.49..165801191.33 rows=10 width=20) (actual time=66.900..304.748 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3644, temp read=326 written=326
+  ->  Nested Loop  (cost=5566.49..113033.24 rows=69999 width=12) (actual time=12.658..287.063 rows=69999 loops=1)
+        Join Filter: (p.locality_id = l.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2777, temp read=326 written=326
+        ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..13.64 rows=100 width=8) (actual time=0.001..0.018 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=5566.35..8196.09 rows=69999 width=12) (actual time=0.126..1.358 rows=69999 loops=100)
+              Buffers: shared hit=2775, temp read=326 written=326
+              ->  Hash Join  (cost=5566.35..7846.10 rows=69999 width=12) (actual time=12.572..24.960 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2775, temp read=326 written=326
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.003..2.644 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3596.60..3596.60 rows=120060 width=8) (actual time=12.464..12.465 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 2  Memory Usage: 3370kB
+                          Buffers: shared hit=2396, temp written=205
+                          ->  Seq Scan on properties p  (cost=0.00..3596.60 rows=120060 width=8) (actual time=0.001..6.425 rows=120060 loops=1)
+                                Buffers: shared hit=2396
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1867.00 rows=100000 width=8) (actual time=0.003..4.361 rows=100000 loops=1)
+          Buffers: shared hit=867
+Planning:
+  Buffers: shared hit=219
+Planning Time: 0.402 ms
+Execution Time: 304.892 ms
+=== R25 run 2 ===
+GroupAggregate  (cost=5566.49..165801191.33 rows=10 width=20) (actual time=66.321..305.097 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3644, temp read=326 written=326
+  ->  Nested Loop  (cost=5566.49..113033.24 rows=69999 width=12) (actual time=12.748..286.712 rows=69999 loops=1)
+        Join Filter: (p.locality_id = l.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2777, temp read=326 written=326
+        ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..13.64 rows=100 width=8) (actual time=0.001..0.024 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=5566.35..8196.09 rows=69999 width=12) (actual time=0.127..1.353 rows=69999 loops=100)
+              Buffers: shared hit=2775, temp read=326 written=326
+              ->  Hash Join  (cost=5566.35..7846.10 rows=69999 width=12) (actual time=12.660..24.436 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2775, temp read=326 written=326
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.003..2.575 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3596.60..3596.60 rows=120060 width=8) (actual time=12.555..12.555 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 2  Memory Usage: 3370kB
+                          Buffers: shared hit=2396, temp written=205
+                          ->  Seq Scan on properties p  (cost=0.00..3596.60 rows=120060 width=8) (actual time=0.001..6.418 rows=120060 loops=1)
+                                Buffers: shared hit=2396
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1867.00 rows=100000 width=8) (actual time=0.003..4.395 rows=100000 loops=1)
+          Buffers: shared hit=867
+Planning:
+  Buffers: shared hit=219
+Planning Time: 0.368 ms
+Execution Time: 305.236 ms
+=== R25 run 3 ===
+GroupAggregate  (cost=5566.49..165801191.33 rows=10 width=20) (actual time=72.420..310.364 rows=10 loops=1)
+  Group Key: l.city_id
+  Buffers: shared hit=3644, temp read=326 written=326
+  ->  Nested Loop  (cost=5566.49..113033.24 rows=69999 width=12) (actual time=12.735..291.742 rows=69999 loops=1)
+        Join Filter: (p.locality_id = l.locality_id)
+        Rows Removed by Join Filter: 6929901
+        Buffers: shared hit=2777, temp read=326 written=326
+        ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..13.64 rows=100 width=8) (actual time=0.001..0.019 rows=100 loops=1)
+              Buffers: shared hit=2
+        ->  Materialize  (cost=5566.35..8196.09 rows=69999 width=12) (actual time=0.126..1.400 rows=69999 loops=100)
+              Buffers: shared hit=2775, temp read=326 written=326
+              ->  Hash Join  (cost=5566.35..7846.10 rows=69999 width=12) (actual time=12.635..28.614 rows=69999 loops=1)
+                    Hash Cond: (s.property_id = p.property_id)
+                    Buffers: shared hit=2775, temp read=326 written=326
+                    ->  Seq Scan on shortlists s  (cost=0.00..1078.99 rows=69999 width=8) (actual time=0.003..2.621 rows=69999 loops=1)
+                          Buffers: shared hit=379
+                    ->  Hash  (cost=3596.60..3596.60 rows=120060 width=8) (actual time=12.489..12.489 rows=120060 loops=1)
+                          Buckets: 131072  Batches: 2  Memory Usage: 3370kB
+                          Buffers: shared hit=2396, temp written=205
+                          ->  Seq Scan on properties p  (cost=0.00..3596.60 rows=120060 width=8) (actual time=0.001..6.396 rows=120060 loops=1)
+                                Buffers: shared hit=2396
+  SubPlan 2
+    ->  Seq Scan on enquiries e  (cost=0.00..1867.00 rows=100000 width=8) (actual time=0.007..4.431 rows=100000 loops=1)
+          Buffers: shared hit=867
+Planning:
+  Buffers: shared hit=219
+Planning Time: 0.443 ms
+Execution Time: 310.505 ms

@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,9.044,8.822,8.164,10.145,Seq Scan on properties | Seq Scan on localities
+R02,READ,7.706,7.712,7.533,7.873,Seq Scan on properties | Seq Scan on localities
+R03,READ,0.072,0.074,0.068,0.075,Index Scan using properties_pkey on properties | Index Scan using projects_pkey on projects | Index Scan using builders_pkey on builders | Index Only Scan using project_amenities_pkey on project_amenities | Index Scan using amenities_pkey on amenities
+R04,READ,13.950,14.046,13.567,14.238,Seq Scan on localities | Seq Scan on properties
+R05,READ,4.758,4.732,4.651,4.892,Seq Scan on properties
+R06,READ,11.435,11.419,11.130,11.756,Seq Scan on site_visits | Seq Scan on enquiries | Seq Scan on properties
+R07,READ,2.590,2.589,2.571,2.610,Seq Scan on site_visits | Index Scan using properties_pkey on properties | Index Scan using users_pkey on users
+R08,READ,1.480,1.480,1.473,1.486,Seq Scan on price_changes | Index Scan using properties_pkey on properties
+R09,READ,12.161,11.961,11.893,12.629,Seq Scan on properties | Seq Scan on project_amenities | Seq Scan on amenities
+R10,READ,0.040,0.041,0.038,0.042,Seq Scan on builders | Index Scan using projects_rera_id_key on projects
+R11,READ,9.510,9.484,9.355,9.690,Seq Scan on properties
+R12,READ,8.093,8.131,7.888,8.260,Seq Scan on enquiries | Seq Scan on site_visits
+R13,READ,11.238,11.329,11.048,11.338,Seq Scan on projects | Seq Scan on properties
+R14,READ,15.942,15.951,15.832,16.043,Seq Scan on properties | Seq Scan on users
+R15,READ,12.804,12.793,12.690,12.930,Seq Scan on properties | Seq Scan on localities
+R16,READ,0.381,0.359,0.334,0.450,Seq Scan on projects
+R17,READ,26.986,27.012,26.851,27.095,Seq Scan on properties | Seq Scan on enquiries
+R18,READ,21.001,21.031,20.797,21.176,Seq Scan on properties
+R19,READ,9495.191,9500.620,9465.956,9518.998,Seq Scan on properties | Seq Scan on localities | Seq Scan on enquiries
+R20,READ,14.134,14.121,14.074,14.206,Seq Scan on properties
+R21,READ,9.989,10.058,9.827,10.081,Seq Scan on properties | Seq Scan on site_visits | Seq Scan on localities
+R22,READ,32.652,32.573,32.188,33.194,Seq Scan on properties
+R23,READ,0.020,0.019,0.018,0.023,Index Scan using users_phone_key on users
+R24,READ,0.132,0.128,0.125,0.144,Seq Scan on projects | Seq Scan on builders
+R25,READ,306.878,305.236,304.892,310.505,Index Scan using localities_city_id_locality_name_key on localities | Seq Scan on shortlists | Seq Scan on properties | Seq Scan on enquiries
+W01,WRITE,0.572,0.479,0.465,0.773,(no scan)
+W02,WRITE,0.470,0.471,0.468,0.472,Index Scan using properties_pkey on properties
+W03,WRITE,0.460,0.446,0.443,0.491,(no scan)
+W04,WRITE,60.125,57.127,56.237,67.012,Seq Scan on properties
+W05,WRITE,9.063,8.578,8.261,10.351,Index Scan using properties_pkey on properties

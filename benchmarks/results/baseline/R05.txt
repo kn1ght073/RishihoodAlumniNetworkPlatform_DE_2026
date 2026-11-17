@@ -1,0 +1,45 @@
+=== R05 run 1 ===
+Limit  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.108..4.877 rows=200 loops=1)
+  Buffers: shared hit=1327
+  ->  Gather  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.107..4.871 rows=200 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=1327
+        ->  Parallel Seq Scan on properties  (cost=0.00..4161.59 rows=48 width=30) (actual time=0.073..3.644 rows=102 loops=2)
+              Filter: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 33148
+              Buffers: shared hit=1327
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.146 ms
+Execution Time: 4.892 ms
+=== R05 run 2 ===
+Limit  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.098..4.637 rows=200 loops=1)
+  Buffers: shared hit=1308
+  ->  Gather  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.098..4.632 rows=200 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=1308
+        ->  Parallel Seq Scan on properties  (cost=0.00..4161.59 rows=48 width=30) (actual time=0.052..3.492 rows=101 loops=2)
+              Filter: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 32658
+              Buffers: shared hit=1308
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.134 ms
+Execution Time: 4.651 ms
+=== R05 run 3 ===
+Limit  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.113..4.718 rows=200 loops=1)
+  Buffers: shared hit=1298
+  ->  Gather  (cost=1000.00..5169.69 rows=81 width=30) (actual time=0.113..4.712 rows=200 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=1298
+        ->  Parallel Seq Scan on properties  (cost=0.00..4161.59 rows=48 width=30) (actual time=0.053..3.554 rows=100 loops=2)
+              Filter: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65) AND ((listing_type)::text = 'RENT'::text) AND ((status)::text = 'ACTIVE'::text))
+              Rows Removed by Filter: 32408
+              Buffers: shared hit=1298
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.141 ms
+Execution Time: 4.732 ms
