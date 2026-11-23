@@ -1,31 +1,31 @@
 query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
-R01,READ,,,,,NOT RUN
-R02,READ,,,,,NOT RUN
-R03,READ,,,,,NOT RUN
-R04,READ,,,,,NOT RUN
-R05,READ,,,,,NOT RUN
-R06,READ,,,,,NOT RUN
-R07,READ,,,,,NOT RUN
-R08,READ,,,,,NOT RUN
-R09,READ,,,,,NOT RUN
-R10,READ,,,,,NOT RUN
-R11,READ,,,,,NOT RUN
-R12,READ,,,,,NOT RUN
-R13,READ,,,,,NOT RUN
-R14,READ,,,,,NOT RUN
-R15,READ,,,,,NOT RUN
-R16,READ,,,,,NOT RUN
-R17,READ,,,,,NOT RUN
-R18,READ,,,,,NOT RUN
-R19,READ,,,,,NOT RUN
-R20,READ,,,,,NOT RUN
-R21,READ,,,,,NOT RUN
-R22,READ,,,,,NOT RUN
-R23,READ,,,,,NOT RUN
-R24,READ,,,,,NOT RUN
-R25,READ,,,,,NOT RUN
-W01,WRITE,,,,,NOT RUN
-W02,WRITE,,,,,NOT RUN
-W03,WRITE,,,,,NOT RUN
-W04,WRITE,,,,,NOT RUN
-W05,WRITE,,,,,NOT RUN
+R01,READ,0.117,0.110,0.089,0.152,Seq Scan on localities | Index Only Scan using ix_properties_rent_search on properties
+R02,READ,0.149,0.146,0.141,0.160,Seq Scan on localities | Index Only Scan using ix_properties_sale_search on properties
+R03,READ,0.100,0.099,0.099,0.103,Index Scan using properties_pkey on properties | Index Scan using projects_pkey on projects | Index Scan using builders_pkey on builders | Index Only Scan using project_amenities_pkey on project_amenities | Index Scan using amenities_pkey on amenities
+R04,READ,0.250,0.152,0.152,0.445,Seq Scan on localities | Index Only Scan using ix_properties_sale_trend on properties
+R05,READ,0.093,0.089,0.082,0.108,Index Only Scan using ix_properties_map_rent on properties
+R06,READ,0.207,0.185,0.173,0.263,Index Only Scan using ix_properties_lister on properties | Index Only Scan using ix_enquiries_property_user on enquiries | Index Only Scan using ix_site_visits_property_user on site_visits
+R07,READ,0.080,0.072,0.065,0.103,Index Only Scan using ix_properties_lister on properties | Index Only Scan using ix_site_visits_property_user on site_visits | Index Scan using users_pkey on users
+R08,READ,2.786,2.675,2.578,3.105,Index Only Scan using ix_properties_active_posted on properties | Index Only Scan using ix_price_changes_changed on price_changes
+R09,READ,1.273,1.312,1.172,1.336,Seq Scan on amenities | Index Only Scan using ix_project_amenities_amenity on project_amenities | Bitmap Heap Scan on properties | Bitmap Index Scan on ix_properties_project_active
+R10,READ,0.043,0.044,0.041,0.045,Seq Scan on builders | Index Scan using projects_rera_id_key on projects
+R11,READ,0.082,0.081,0.076,0.089,Index Only Scan using ix_properties_project_active on properties
+R12,READ,3.849,3.852,3.801,3.894,Index Only Scan using ix_enquiries_created on enquiries | Seq Scan on site_visits
+R13,READ,10.658,10.564,10.514,10.897,Seq Scan on projects | Seq Scan on properties
+R14,READ,2.781,2.816,2.683,2.843,Index Only Scan using ix_properties_deal_posted on properties | Seq Scan on users
+R15,READ,1.792,1.734,1.727,1.914,Index Scan using localities_city_id_locality_name_key on localities | Index Only Scan using ix_properties_locality_type on properties
+R16,READ,0.453,0.424,0.422,0.514,Seq Scan on projects
+R17,READ,9.708,9.825,9.464,9.834,Seq Scan on enquiries | Index Only Scan using ix_properties_active_posted on properties
+R18,READ,4.665,4.668,4.483,4.844,Index Only Scan using ix_properties_duplicate_check on properties
+R19,READ,22.504,22.218,21.981,23.314,Seq Scan on enquiries | Index Scan using ix_properties_active_posted on properties | Seq Scan on localities
+R20,READ,11.914,11.823,11.670,12.249,Seq Scan on properties
+R21,READ,10.100,9.893,9.889,10.519,Seq Scan on properties | Seq Scan on site_visits | Seq Scan on localities
+R22,READ,2.940,2.831,2.821,3.169,Index Only Scan using ix_properties_posted_desc on properties
+R23,READ,0.024,0.022,0.022,0.027,Index Scan using users_phone_key on users
+R24,READ,0.150,0.150,0.144,0.156,Seq Scan on projects | Seq Scan on builders
+R25,READ,70.809,71.067,70.129,71.230,Seq Scan on shortlists | Seq Scan on properties | Seq Scan on localities | Index Only Scan using ix_enquiries_property_user on enquiries
+W01,WRITE,0.842,0.854,0.756,0.915,(no scan)
+W02,WRITE,0.303,0.301,0.281,0.327,Index Only Scan using ix_properties_lister on properties | Index Scan using properties_pkey on properties
+W03,WRITE,0.907,0.904,0.832,0.985,(no scan)
+W04,WRITE,154.751,148.610,121.138,194.505,Index Scan using ix_properties_active_posted on properties
+W05,WRITE,0.303,0.288,0.285,0.336,Index Only Scan using ix_properties_lister on properties | Index Scan using properties_pkey on properties

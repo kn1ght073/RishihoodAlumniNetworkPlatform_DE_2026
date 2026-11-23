@@ -1,0 +1,78 @@
+=== R08 run 1 ===
+Sort  (cost=1678.71..1679.04 rows=132 width=48) (actual time=3.069..3.079 rows=559.00 loops=1)
+  Sort Key: (round(('100'::numeric * ('1'::numeric - (c.new_price / c.old_price))), 1)) DESC
+  Sort Method: quicksort  Memory: 48kB
+  Buffers: shared hit=5 read=232
+  ->  Hash Join  (cost=70.38..1674.06 rows=132 width=48) (actual time=1.779..2.978 rows=559.00 loops=1)
+        Hash Cond: (p.property_id = c.property_id)
+        Buffers: shared hit=2 read=232
+        ->  Index Only Scan using ix_properties_active_posted on properties p  (cost=0.29..1463.77 rows=36682 width=4) (actual time=0.016..1.637 rows=36819.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=1 read=223
+        ->  Hash  (cost=64.69..64.69 rows=432 width=16) (actual time=0.187..0.187 rows=658.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 40kB
+              Buffers: shared hit=1 read=9
+              ->  Index Only Scan using ix_price_changes_changed on price_changes c  (cost=0.29..64.69 rows=432 width=16) (actual time=0.033..0.151 rows=658.00 loops=1)
+                    Index Cond: ((changed_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (changed_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: (new_price <= (old_price * 0.9))
+                    Rows Removed by Filter: 639
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=1 read=9
+Planning:
+  Buffers: shared hit=564
+Planning Time: 0.684 ms
+Execution Time: 3.105 ms
+=== R08 run 2 ===
+Sort  (cost=1678.71..1679.04 rows=132 width=48) (actual time=2.641..2.650 rows=559.00 loops=1)
+  Sort Key: (round(('100'::numeric * ('1'::numeric - (c.new_price / c.old_price))), 1)) DESC
+  Sort Method: quicksort  Memory: 48kB
+  Buffers: shared hit=237
+  ->  Hash Join  (cost=70.38..1674.06 rows=132 width=48) (actual time=1.610..2.558 rows=559.00 loops=1)
+        Hash Cond: (p.property_id = c.property_id)
+        Buffers: shared hit=234
+        ->  Index Only Scan using ix_properties_active_posted on properties p  (cost=0.29..1463.77 rows=36682 width=4) (actual time=0.004..1.317 rows=36819.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=224
+        ->  Hash  (cost=64.69..64.69 rows=432 width=16) (actual time=0.170..0.170 rows=658.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 40kB
+              Buffers: shared hit=10
+              ->  Index Only Scan using ix_price_changes_changed on price_changes c  (cost=0.29..64.69 rows=432 width=16) (actual time=0.025..0.134 rows=658.00 loops=1)
+                    Index Cond: ((changed_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (changed_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: (new_price <= (old_price * 0.9))
+                    Rows Removed by Filter: 639
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=10
+Planning:
+  Buffers: shared hit=564
+Planning Time: 0.663 ms
+Execution Time: 2.675 ms
+=== R08 run 3 ===
+Sort  (cost=1678.71..1679.04 rows=132 width=48) (actual time=2.544..2.553 rows=559.00 loops=1)
+  Sort Key: (round(('100'::numeric * ('1'::numeric - (c.new_price / c.old_price))), 1)) DESC
+  Sort Method: quicksort  Memory: 48kB
+  Buffers: shared hit=237
+  ->  Hash Join  (cost=70.38..1674.06 rows=132 width=48) (actual time=1.554..2.461 rows=559.00 loops=1)
+        Hash Cond: (p.property_id = c.property_id)
+        Buffers: shared hit=234
+        ->  Index Only Scan using ix_properties_active_posted on properties p  (cost=0.29..1463.77 rows=36682 width=4) (actual time=0.004..1.226 rows=36819.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=224
+        ->  Hash  (cost=64.69..64.69 rows=432 width=16) (actual time=0.166..0.166 rows=658.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 40kB
+              Buffers: shared hit=10
+              ->  Index Only Scan using ix_price_changes_changed on price_changes c  (cost=0.29..64.69 rows=432 width=16) (actual time=0.025..0.131 rows=658.00 loops=1)
+                    Index Cond: ((changed_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (changed_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Filter: (new_price <= (old_price * 0.9))
+                    Rows Removed by Filter: 639
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=10
+Planning:
+  Buffers: shared hit=564
+Planning Time: 0.686 ms
+Execution Time: 2.578 ms

@@ -1,0 +1,36 @@
+=== R05 run 1 ===
+Limit  (cost=0.29..62.70 rows=88 width=30) (actual time=0.062..0.094 rows=200.00 loops=1)
+  Buffers: shared hit=9 read=4
+  ->  Index Only Scan using ix_properties_map_rent on properties  (cost=0.29..62.70 rows=88 width=30) (actual time=0.062..0.087 rows=200.00 loops=1)
+        Index Cond: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65))
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=9 read=4
+Planning:
+  Buffers: shared hit=395
+Planning Time: 0.576 ms
+Execution Time: 0.108 ms
+=== R05 run 2 ===
+Limit  (cost=0.29..62.70 rows=88 width=30) (actual time=0.049..0.075 rows=200.00 loops=1)
+  Buffers: shared hit=13
+  ->  Index Only Scan using ix_properties_map_rent on properties  (cost=0.29..62.70 rows=88 width=30) (actual time=0.049..0.068 rows=200.00 loops=1)
+        Index Cond: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65))
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=395
+Planning Time: 0.573 ms
+Execution Time: 0.089 ms
+=== R05 run 3 ===
+Limit  (cost=0.29..62.70 rows=88 width=30) (actual time=0.045..0.069 rows=200.00 loops=1)
+  Buffers: shared hit=13
+  ->  Index Only Scan using ix_properties_map_rent on properties  (cost=0.29..62.70 rows=88 width=30) (actual time=0.044..0.062 rows=200.00 loops=1)
+        Index Cond: ((latitude >= 12.90) AND (latitude <= 13.00) AND (longitude >= 77.55) AND (longitude <= 77.65))
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=395
+Planning Time: 0.548 ms
+Execution Time: 0.082 ms

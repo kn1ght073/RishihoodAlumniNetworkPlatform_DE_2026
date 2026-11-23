@@ -1,0 +1,54 @@
+=== R18 run 1 ===
+Sort  (cost=48405.97..48601.14 rows=78066 width=29) (actual time=123.918..123.942 rows=1264.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 108kB
+  Buffers: shared hit=327755 read=3758
+  ->  GroupAggregate  (cost=0.42..40193.17 rows=78066 width=29) (actual time=0.179..123.789 rows=1264.00 loops=1)
+        Group Key: listed_by, locality_id, carpet_area_sqft, floor_no, bhk
+        Filter: (count(*) > 1)
+        Rows Removed by Filter: 734194
+        Buffers: shared hit=327752 read=3758
+        ->  Index Only Scan using ix_properties_duplicate_check on properties  (cost=0.42..26169.51 rows=739747 width=21) (actual time=0.043..52.206 rows=736722.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=327752 read=3758
+Planning:
+  Buffers: shared hit=444 read=1
+Planning Time: 0.731 ms
+Execution Time: 123.989 ms
+=== R18 run 2 ===
+Sort  (cost=48405.97..48601.14 rows=78066 width=29) (actual time=122.005..122.029 rows=1264.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 108kB
+  Buffers: shared hit=331513
+  ->  GroupAggregate  (cost=0.42..40193.17 rows=78066 width=29) (actual time=0.165..121.875 rows=1264.00 loops=1)
+        Group Key: listed_by, locality_id, carpet_area_sqft, floor_no, bhk
+        Filter: (count(*) > 1)
+        Rows Removed by Filter: 734194
+        Buffers: shared hit=331510
+        ->  Index Only Scan using ix_properties_duplicate_check on properties  (cost=0.42..26169.51 rows=739747 width=21) (actual time=0.029..48.594 rows=736722.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=331510
+Planning:
+  Buffers: shared hit=445
+Planning Time: 0.590 ms
+Execution Time: 122.085 ms
+=== R18 run 3 ===
+Sort  (cost=48405.97..48601.14 rows=78066 width=29) (actual time=118.006..118.030 rows=1264.00 loops=1)
+  Sort Key: (count(*)) DESC
+  Sort Method: quicksort  Memory: 108kB
+  Buffers: shared hit=331513
+  ->  GroupAggregate  (cost=0.42..40193.17 rows=78066 width=29) (actual time=0.163..117.887 rows=1264.00 loops=1)
+        Group Key: listed_by, locality_id, carpet_area_sqft, floor_no, bhk
+        Filter: (count(*) > 1)
+        Rows Removed by Filter: 734194
+        Buffers: shared hit=331510
+        ->  Index Only Scan using ix_properties_duplicate_check on properties  (cost=0.42..26169.51 rows=739747 width=21) (actual time=0.031..46.435 rows=736722.00 loops=1)
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=331510
+Planning:
+  Buffers: shared hit=445
+Planning Time: 0.627 ms
+Execution Time: 118.078 ms

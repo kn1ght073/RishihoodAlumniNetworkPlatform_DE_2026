@@ -1,0 +1,36 @@
+=== W04 run 1 ===
+Update on properties  (cost=0.43..37344.77 rows=0 width=0) (actual time=6853.642..6853.643 rows=0.00 loops=1)
+  Buffers: shared hit=5169863 read=424105 dirtied=428037 written=413493
+  ->  Index Scan using ix_properties_active_posted on properties  (cost=0.43..37344.77 rows=578650 width=64) (actual time=0.017..255.211 rows=287639.00 loops=1)
+        Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '120 days'::interval))
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=881 read=39097 written=37094
+Planning:
+  Buffers: shared hit=364
+Planning Time: 0.543 ms
+Execution Time: 6853.693 ms
+=== W04 run 2 ===
+Update on properties  (cost=0.43..41801.96 rows=0 width=0) (actual time=7602.370..7602.370 rows=0.00 loops=1)
+  Buffers: shared hit=5410638 read=430080 dirtied=434392 written=432855
+  ->  Index Scan using ix_properties_active_posted on properties  (cost=0.43..41801.96 rows=647707 width=64) (actual time=0.036..996.923 rows=287639.00 loops=1)
+        Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '120 days'::interval))
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=923 read=39055 dirtied=37321 written=38025
+Planning:
+  Buffers: shared hit=318 read=46 written=46
+Planning Time: 0.852 ms
+Execution Time: 7602.469 ms
+=== W04 run 3 ===
+Update on properties  (cost=0.43..46293.74 rows=0 width=0) (actual time=7670.969..7670.969 rows=0.00 loops=1)
+  Buffers: shared hit=5411561 read=430487 dirtied=434808 written=433254
+  ->  Index Scan using ix_properties_active_posted on properties  (cost=0.43..46293.74 rows=717332 width=64) (actual time=0.038..960.314 rows=287639.00 loops=1)
+        Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '120 days'::interval))
+        Filter: ((status)::text = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=988 read=38990 dirtied=37256 written=38022
+Planning:
+  Buffers: shared hit=318 read=46 written=45
+Planning Time: 0.887 ms
+Execution Time: 7671.061 ms

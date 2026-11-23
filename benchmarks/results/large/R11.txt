@@ -1,0 +1,54 @@
+=== R11 run 1 ===
+Sort  (cost=5.28..5.30 rows=9 width=81) (actual time=0.059..0.060 rows=9.00 loops=1)
+  Sort Key: bhk, listing_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10 read=1
+  ->  HashAggregate  (cost=5.05..5.14 rows=9 width=81) (actual time=0.047..0.048 rows=9.00 loops=1)
+        Group Key: bhk, listing_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=4 read=1
+        ->  Index Only Scan using ix_properties_project_active on properties  (cost=0.43..4.81 rows=19 width=15) (actual time=0.036..0.038 rows=18.00 loops=1)
+              Index Cond: ((project_id = 217) AND (status = 'ACTIVE'::text))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=4 read=1
+Planning:
+  Buffers: shared hit=430 read=1
+Planning Time: 0.635 ms
+Execution Time: 0.086 ms
+=== R11 run 2 ===
+Sort  (cost=5.28..5.30 rows=9 width=81) (actual time=0.057..0.057 rows=9.00 loops=1)
+  Sort Key: bhk, listing_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=11
+  ->  HashAggregate  (cost=5.05..5.14 rows=9 width=81) (actual time=0.044..0.045 rows=9.00 loops=1)
+        Group Key: bhk, listing_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=5
+        ->  Index Only Scan using ix_properties_project_active on properties  (cost=0.43..4.81 rows=19 width=15) (actual time=0.033..0.036 rows=18.00 loops=1)
+              Index Cond: ((project_id = 217) AND (status = 'ACTIVE'::text))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=431
+Planning Time: 0.582 ms
+Execution Time: 0.081 ms
+=== R11 run 3 ===
+Sort  (cost=5.28..5.30 rows=9 width=81) (actual time=0.060..0.061 rows=9.00 loops=1)
+  Sort Key: bhk, listing_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=11
+  ->  HashAggregate  (cost=5.05..5.14 rows=9 width=81) (actual time=0.048..0.048 rows=9.00 loops=1)
+        Group Key: bhk, listing_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=5
+        ->  Index Only Scan using ix_properties_project_active on properties  (cost=0.43..4.81 rows=19 width=15) (actual time=0.034..0.038 rows=18.00 loops=1)
+              Index Cond: ((project_id = 217) AND (status = 'ACTIVE'::text))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=431
+Planning Time: 0.671 ms
+Execution Time: 0.089 ms

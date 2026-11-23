@@ -1,0 +1,84 @@
+=== R17 run 1 ===
+Gather Merge  (cost=83090.74..126402.76 rows=371884 width=16) (actual time=139.425..150.890 rows=177312.00 loops=1)
+  Workers Planned: 2
+  Workers Launched: 2
+  Buffers: shared hit=850 read=19764, temp read=7422 written=7496
+  ->  Sort  (cost=82090.71..82478.09 rows=154952 width=16) (actual time=135.728..137.357 rows=59104.00 loops=3)
+        Sort Key: p.posted_at
+        Sort Method: quicksort  Memory: 3828kB
+        Buffers: shared hit=850 read=19764, temp read=7422 written=7496
+        Worker 0:  Sort Method: quicksort  Memory: 2923kB
+        Worker 1:  Sort Method: quicksort  Memory: 3838kB
+        ->  Parallel Hash Right Anti Join  (cost=26727.22..66083.22 rows=154952 width=16) (actual time=101.612..129.877 rows=59104.00 loops=3)
+              Hash Cond: (e.property_id = p.property_id)
+              Buffers: shared hit=834 read=19764, temp read=7422 written=7496
+              ->  Parallel Seq Scan on enquiries e  (cost=0.00..25685.33 rows=833333 width=4) (actual time=0.070..26.104 rows=666666.67 loops=3)
+                    Buffers: shared read=17352
+              ->  Parallel Hash  (cost=22236.58..22236.58 rows=258291 width=16) (actual time=20.592..20.592 rows=133302.33 loops=3)
+                    Buckets: 262144  Batches: 8  Memory Usage: 4448kB
+                    Buffers: shared hit=834 read=2412, temp written=1584
+                    ->  Parallel Index Only Scan using ix_properties_active_posted on properties p  (cost=0.43..22236.58 rows=258291 width=16) (actual time=0.038..10.247 rows=133302.33 loops=3)
+                          Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '90 days'::interval))
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=834 read=2412
+Planning:
+  Buffers: shared hit=559 read=15
+Planning Time: 0.890 ms
+Execution Time: 154.350 ms
+=== R17 run 2 ===
+Gather Merge  (cost=83090.74..126402.76 rows=371884 width=16) (actual time=136.217..147.438 rows=177312.00 loops=1)
+  Workers Planned: 2
+  Workers Launched: 2
+  Buffers: shared hit=3544 read=17071, temp read=7421 written=7468
+  ->  Sort  (cost=82090.71..82478.09 rows=154952 width=16) (actual time=132.368..134.001 rows=59104.00 loops=3)
+        Sort Key: p.posted_at
+        Sort Method: quicksort  Memory: 3842kB
+        Buffers: shared hit=3544 read=17071, temp read=7421 written=7468
+        Worker 0:  Sort Method: quicksort  Memory: 3834kB
+        Worker 1:  Sort Method: quicksort  Memory: 2913kB
+        ->  Parallel Hash Right Anti Join  (cost=26727.22..66083.22 rows=154952 width=16) (actual time=102.114..126.578 rows=59104.00 loops=3)
+              Hash Cond: (e.property_id = p.property_id)
+              Buffers: shared hit=3528 read=17071, temp read=7421 written=7468
+              ->  Parallel Seq Scan on enquiries e  (cost=0.00..25685.33 rows=833333 width=4) (actual time=0.049..29.179 rows=666666.67 loops=3)
+                    Buffers: shared hit=282 read=17070
+              ->  Parallel Hash  (cost=22236.58..22236.58 rows=258291 width=16) (actual time=18.693..18.693 rows=133302.33 loops=3)
+                    Buckets: 262144  Batches: 8  Memory Usage: 4448kB
+                    Buffers: shared hit=3246 read=1, temp written=1568
+                    ->  Parallel Index Only Scan using ix_properties_active_posted on properties p  (cost=0.43..22236.58 rows=258291 width=16) (actual time=0.024..7.907 rows=133302.33 loops=3)
+                          Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '90 days'::interval))
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=3246 read=1
+Planning:
+  Buffers: shared hit=574
+Planning Time: 0.964 ms
+Execution Time: 150.846 ms
+=== R17 run 3 ===
+Gather Merge  (cost=83090.74..126402.76 rows=371884 width=16) (actual time=128.357..140.214 rows=177312.00 loops=1)
+  Workers Planned: 2
+  Workers Launched: 2
+  Buffers: shared hit=3826 read=16788, temp read=7417 written=7500
+  ->  Sort  (cost=82090.71..82478.09 rows=154952 width=16) (actual time=124.643..126.326 rows=59104.00 loops=3)
+        Sort Key: p.posted_at
+        Sort Method: quicksort  Memory: 3838kB
+        Buffers: shared hit=3826 read=16788, temp read=7417 written=7500
+        Worker 0:  Sort Method: quicksort  Memory: 2913kB
+        Worker 1:  Sort Method: quicksort  Memory: 3838kB
+        ->  Parallel Hash Right Anti Join  (cost=26727.22..66083.22 rows=154952 width=16) (actual time=94.222..118.760 rows=59104.00 loops=3)
+              Hash Cond: (e.property_id = p.property_id)
+              Buffers: shared hit=3810 read=16788, temp read=7417 written=7500
+              ->  Parallel Seq Scan on enquiries e  (cost=0.00..25685.33 rows=833333 width=4) (actual time=0.076..24.833 rows=666666.67 loops=3)
+                    Buffers: shared hit=564 read=16788
+              ->  Parallel Hash  (cost=22236.58..22236.58 rows=258291 width=16) (actual time=19.293..19.293 rows=133302.33 loops=3)
+                    Buckets: 262144  Batches: 8  Memory Usage: 4448kB
+                    Buffers: shared hit=3246, temp written=1592
+                    ->  Parallel Index Only Scan using ix_properties_active_posted on properties p  (cost=0.43..22236.58 rows=258291 width=16) (actual time=0.021..7.510 rows=133302.33 loops=3)
+                          Index Cond: (posted_at < ('2026-07-01 00:00:00+05:30'::timestamp with time zone - '90 days'::interval))
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=3246
+Planning:
+  Buffers: shared hit=574
+Planning Time: 0.945 ms
+Execution Time: 143.673 ms

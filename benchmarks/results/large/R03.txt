@@ -1,0 +1,111 @@
+=== R03 run 1 ===
+GroupAggregate  (cost=21.86..21.93 rows=3 width=95) (actual time=0.041..0.041 rows=1.00 loops=1)
+  Group Key: pj.project_name, b.builder_name
+  Buffers: shared hit=4 read=3
+  ->  Sort  (cost=21.86..21.87 rows=3 width=76) (actual time=0.037..0.037 rows=1.00 loops=1)
+        Sort Key: pj.project_name, b.builder_name, a.amenity_name
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=4 read=3
+        ->  Nested Loop Left Join  (cost=1.29..21.84 rows=3 width=76) (actual time=0.029..0.030 rows=1.00 loops=1)
+              Buffers: shared hit=1 read=3
+              ->  Nested Loop Left Join  (cost=1.16..21.38 rows=3 width=67) (actual time=0.028..0.028 rows=1.00 loops=1)
+                    Buffers: shared hit=1 read=3
+                    ->  Nested Loop Left Join  (cost=0.86..16.92 rows=1 width=67) (actual time=0.026..0.026 rows=1.00 loops=1)
+                          Buffers: shared hit=1 read=3
+                          ->  Nested Loop Left Join  (cost=0.72..16.75 rows=1 width=47) (actual time=0.024..0.024 rows=1.00 loops=1)
+                                Buffers: shared hit=1 read=3
+                                ->  Index Scan using properties_pkey on properties p  (cost=0.43..8.45 rows=1 width=23) (actual time=0.020..0.021 rows=1.00 loops=1)
+                                      Index Cond: (property_id = 6897)
+                                      Index Searches: 1
+                                      Buffers: shared hit=1 read=3
+                                ->  Index Scan using projects_pkey on projects pj  (cost=0.29..8.30 rows=1 width=28) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                      Index Cond: (project_id = p.project_id)
+                                      Index Searches: 0
+                          ->  Index Scan using builders_pkey on builders b  (cost=0.14..0.16 rows=1 width=28) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                Index Cond: (builder_id = pj.builder_id)
+                                Index Searches: 0
+                    ->  Index Only Scan using project_amenities_pkey on project_amenities pa  (cost=0.29..4.40 rows=6 width=8) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Index Cond: (project_id = p.project_id)
+                          Heap Fetches: 0
+                          Index Searches: 0
+              ->  Index Scan using amenities_pkey on amenities a  (cost=0.14..0.15 rows=1 width=17) (actual time=0.001..0.001 rows=0.00 loops=1)
+                    Index Cond: (amenity_id = pa.amenity_id)
+                    Index Searches: 0
+Planning:
+  Buffers: shared hit=619 read=20
+Planning Time: 2.975 ms
+Execution Time: 0.082 ms
+=== R03 run 2 ===
+GroupAggregate  (cost=21.86..21.93 rows=3 width=95) (actual time=0.033..0.034 rows=1.00 loops=1)
+  Group Key: pj.project_name, b.builder_name
+  Buffers: shared hit=7
+  ->  Sort  (cost=21.86..21.87 rows=3 width=76) (actual time=0.030..0.030 rows=1.00 loops=1)
+        Sort Key: pj.project_name, b.builder_name, a.amenity_name
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=7
+        ->  Nested Loop Left Join  (cost=1.29..21.84 rows=3 width=76) (actual time=0.023..0.024 rows=1.00 loops=1)
+              Buffers: shared hit=4
+              ->  Nested Loop Left Join  (cost=1.16..21.38 rows=3 width=67) (actual time=0.021..0.022 rows=1.00 loops=1)
+                    Buffers: shared hit=4
+                    ->  Nested Loop Left Join  (cost=0.86..16.92 rows=1 width=67) (actual time=0.019..0.020 rows=1.00 loops=1)
+                          Buffers: shared hit=4
+                          ->  Nested Loop Left Join  (cost=0.72..16.75 rows=1 width=47) (actual time=0.018..0.018 rows=1.00 loops=1)
+                                Buffers: shared hit=4
+                                ->  Index Scan using properties_pkey on properties p  (cost=0.43..8.45 rows=1 width=23) (actual time=0.015..0.015 rows=1.00 loops=1)
+                                      Index Cond: (property_id = 6897)
+                                      Index Searches: 1
+                                      Buffers: shared hit=4
+                                ->  Index Scan using projects_pkey on projects pj  (cost=0.29..8.30 rows=1 width=28) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                      Index Cond: (project_id = p.project_id)
+                                      Index Searches: 0
+                          ->  Index Scan using builders_pkey on builders b  (cost=0.14..0.16 rows=1 width=28) (actual time=0.001..0.001 rows=0.00 loops=1)
+                                Index Cond: (builder_id = pj.builder_id)
+                                Index Searches: 0
+                    ->  Index Only Scan using project_amenities_pkey on project_amenities pa  (cost=0.29..4.40 rows=6 width=8) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Index Cond: (project_id = p.project_id)
+                          Heap Fetches: 0
+                          Index Searches: 0
+              ->  Index Scan using amenities_pkey on amenities a  (cost=0.14..0.15 rows=1 width=17) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Index Cond: (amenity_id = pa.amenity_id)
+                    Index Searches: 0
+Planning:
+  Buffers: shared hit=639
+Planning Time: 1.109 ms
+Execution Time: 0.071 ms
+=== R03 run 3 ===
+GroupAggregate  (cost=21.86..21.93 rows=3 width=95) (actual time=0.037..0.038 rows=1.00 loops=1)
+  Group Key: pj.project_name, b.builder_name
+  Buffers: shared hit=7
+  ->  Sort  (cost=21.86..21.87 rows=3 width=76) (actual time=0.034..0.034 rows=1.00 loops=1)
+        Sort Key: pj.project_name, b.builder_name, a.amenity_name
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=7
+        ->  Nested Loop Left Join  (cost=1.29..21.84 rows=3 width=76) (actual time=0.027..0.027 rows=1.00 loops=1)
+              Buffers: shared hit=4
+              ->  Nested Loop Left Join  (cost=1.16..21.38 rows=3 width=67) (actual time=0.025..0.025 rows=1.00 loops=1)
+                    Buffers: shared hit=4
+                    ->  Nested Loop Left Join  (cost=0.86..16.92 rows=1 width=67) (actual time=0.017..0.017 rows=1.00 loops=1)
+                          Buffers: shared hit=4
+                          ->  Nested Loop Left Join  (cost=0.72..16.75 rows=1 width=47) (actual time=0.015..0.015 rows=1.00 loops=1)
+                                Buffers: shared hit=4
+                                ->  Index Scan using properties_pkey on properties p  (cost=0.43..8.45 rows=1 width=23) (actual time=0.012..0.012 rows=1.00 loops=1)
+                                      Index Cond: (property_id = 6897)
+                                      Index Searches: 1
+                                      Buffers: shared hit=4
+                                ->  Index Scan using projects_pkey on projects pj  (cost=0.29..8.30 rows=1 width=28) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                      Index Cond: (project_id = p.project_id)
+                                      Index Searches: 0
+                          ->  Index Scan using builders_pkey on builders b  (cost=0.14..0.16 rows=1 width=28) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                Index Cond: (builder_id = pj.builder_id)
+                                Index Searches: 0
+                    ->  Index Only Scan using project_amenities_pkey on project_amenities pa  (cost=0.29..4.40 rows=6 width=8) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Index Cond: (project_id = p.project_id)
+                          Heap Fetches: 0
+                          Index Searches: 0
+              ->  Index Scan using amenities_pkey on amenities a  (cost=0.14..0.15 rows=1 width=17) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Index Cond: (amenity_id = pa.amenity_id)
+                    Index Searches: 0
+Planning:
+  Buffers: shared hit=639
+Planning Time: 1.122 ms
+Execution Time: 0.076 ms

@@ -1,0 +1,72 @@
+=== W05 run 1 ===
+Update on properties  (cost=8.99..17.01 rows=0 width=0) (actual time=0.454..0.454 rows=0.00 loops=1)
+  Buffers: shared hit=62 read=26 dirtied=6 written=26
+  InitPlan 2
+    ->  Result  (cost=8.55..8.56 rows=1 width=4) (actual time=0.103..0.103 rows=1.00 loops=1)
+          Buffers: shared hit=2 read=9 dirtied=1 written=9
+          InitPlan 1
+            ->  Limit  (cost=0.43..8.55 rows=1 width=4) (actual time=0.102..0.102 rows=1.00 loops=1)
+                  Buffers: shared hit=2 read=9 dirtied=1 written=9
+                  ->  Index Only Scan using ix_properties_lister on properties properties_1  (cost=0.43..24.79 rows=3 width=4) (actual time=0.102..0.102 rows=1.00 loops=1)
+                        Index Cond: (listed_by = 1033)
+                        Filter: (((status)::text = 'ACTIVE'::text) AND ((listing_type)::text = 'RENT'::text))
+                        Rows Removed by Filter: 6
+                        Heap Fetches: 7
+                        Index Searches: 1
+                        Buffers: shared hit=2 read=9 dirtied=1 written=9
+  ->  Index Scan using properties_pkey on properties  (cost=0.43..8.45 rows=1 width=64) (actual time=0.121..0.122 rows=1.00 loops=1)
+        Index Cond: (property_id = (InitPlan 2).col1)
+        Index Searches: 1
+        Buffers: shared hit=6 read=11 dirtied=1 written=11
+Planning:
+  Buffers: shared hit=362 read=53 written=53
+Planning Time: 1.013 ms
+Execution Time: 0.564 ms
+=== W05 run 2 ===
+Update on properties  (cost=8.99..17.01 rows=0 width=0) (actual time=0.308..0.309 rows=0.00 loops=1)
+  Buffers: shared hit=88
+  InitPlan 2
+    ->  Result  (cost=8.55..8.56 rows=1 width=4) (actual time=0.042..0.042 rows=1.00 loops=1)
+          Buffers: shared hit=11
+          InitPlan 1
+            ->  Limit  (cost=0.43..8.55 rows=1 width=4) (actual time=0.041..0.041 rows=1.00 loops=1)
+                  Buffers: shared hit=11
+                  ->  Index Only Scan using ix_properties_lister on properties properties_1  (cost=0.43..24.79 rows=3 width=4) (actual time=0.040..0.040 rows=1.00 loops=1)
+                        Index Cond: (listed_by = 1033)
+                        Filter: (((status)::text = 'ACTIVE'::text) AND ((listing_type)::text = 'RENT'::text))
+                        Rows Removed by Filter: 6
+                        Heap Fetches: 7
+                        Index Searches: 1
+                        Buffers: shared hit=11
+  ->  Index Scan using properties_pkey on properties  (cost=0.43..8.45 rows=1 width=64) (actual time=0.050..0.050 rows=1.00 loops=1)
+        Index Cond: (property_id = (InitPlan 2).col1)
+        Index Searches: 1
+        Buffers: shared hit=17
+Planning:
+  Buffers: shared hit=415
+Planning Time: 0.663 ms
+Execution Time: 0.359 ms
+=== W05 run 3 ===
+Update on properties  (cost=8.99..17.01 rows=0 width=0) (actual time=0.258..0.258 rows=0.00 loops=1)
+  Buffers: shared hit=88
+  InitPlan 2
+    ->  Result  (cost=8.55..8.56 rows=1 width=4) (actual time=0.041..0.042 rows=1.00 loops=1)
+          Buffers: shared hit=11
+          InitPlan 1
+            ->  Limit  (cost=0.43..8.55 rows=1 width=4) (actual time=0.041..0.041 rows=1.00 loops=1)
+                  Buffers: shared hit=11
+                  ->  Index Only Scan using ix_properties_lister on properties properties_1  (cost=0.43..24.79 rows=3 width=4) (actual time=0.040..0.040 rows=1.00 loops=1)
+                        Index Cond: (listed_by = 1033)
+                        Filter: (((status)::text = 'ACTIVE'::text) AND ((listing_type)::text = 'RENT'::text))
+                        Rows Removed by Filter: 6
+                        Heap Fetches: 7
+                        Index Searches: 1
+                        Buffers: shared hit=11
+  ->  Index Scan using properties_pkey on properties  (cost=0.43..8.45 rows=1 width=64) (actual time=0.049..0.050 rows=1.00 loops=1)
+        Index Cond: (property_id = (InitPlan 2).col1)
+        Index Searches: 1
+        Buffers: shared hit=17
+Planning:
+  Buffers: shared hit=415
+Planning Time: 0.645 ms
+Execution Time: 0.309 ms

@@ -1,0 +1,108 @@
+=== R06 run 1 ===
+Sort  (cost=120.83..120.86 rows=12 width=38) (actual time=8.861..8.862 rows=50.00 loops=1)
+  Sort Key: (count(DISTINCT e.enquiry_id)) DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=245 read=132
+  ->  GroupAggregate  (cost=11.17..120.61 rows=12 width=38) (actual time=4.752..8.852 rows=50.00 loops=1)
+        Group Key: p.property_id
+        Buffers: shared hit=242 read=132
+        ->  Incremental Sort  (cost=11.17..120.40 rows=12 width=30) (actual time=4.745..8.822 rows=80.00 loops=1)
+              Sort Key: p.property_id, e.enquiry_id
+              Presorted Key: p.property_id
+              Full-sort Groups: 3  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+              Buffers: shared hit=242 read=132
+              ->  Nested Loop Left Join  (cost=1.28..119.86 rows=12 width=30) (actual time=0.237..8.796 rows=80.00 loops=1)
+                    Buffers: shared hit=239 read=132
+                    ->  Nested Loop Left Join  (cost=0.86..62.43 rows=12 width=26) (actual time=0.015..0.307 rows=71.00 loops=1)
+                          Buffers: shared hit=83 read=74
+                          ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=22) (actual time=0.007..0.018 rows=50.00 loops=1)
+                                Index Cond: (listed_by = 1033)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=5 read=1
+                          ->  Index Only Scan using ix_enquiries_property_user on enquiries e  (cost=0.43..4.80 rows=2 width=8) (actual time=0.006..0.006 rows=1.10 loops=50)
+                                Index Cond: (property_id = p.property_id)
+                                Heap Fetches: 0
+                                Index Searches: 50
+                                Buffers: shared hit=78 read=73
+                    ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=8) (actual time=0.119..0.119 rows=0.58 loops=71)
+                          Index Cond: (property_id = p.property_id)
+                          Heap Fetches: 0
+                          Index Searches: 71
+                          Buffers: shared hit=156 read=58
+Planning:
+  Buffers: shared hit=611 read=21
+Planning Time: 1.134 ms
+Execution Time: 8.895 ms
+=== R06 run 2 ===
+Sort  (cost=120.83..120.86 rows=12 width=38) (actual time=0.317..0.318 rows=50.00 loops=1)
+  Sort Key: (count(DISTINCT e.enquiry_id)) DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=377
+  ->  GroupAggregate  (cost=11.17..120.61 rows=12 width=38) (actual time=0.148..0.308 rows=50.00 loops=1)
+        Group Key: p.property_id
+        Buffers: shared hit=374
+        ->  Incremental Sort  (cost=11.17..120.40 rows=12 width=30) (actual time=0.142..0.280 rows=80.00 loops=1)
+              Sort Key: p.property_id, e.enquiry_id
+              Presorted Key: p.property_id
+              Full-sort Groups: 3  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+              Buffers: shared hit=374
+              ->  Nested Loop Left Join  (cost=1.28..119.86 rows=12 width=30) (actual time=0.017..0.261 rows=80.00 loops=1)
+                    Buffers: shared hit=371
+                    ->  Nested Loop Left Join  (cost=0.86..62.43 rows=12 width=26) (actual time=0.013..0.151 rows=71.00 loops=1)
+                          Buffers: shared hit=157
+                          ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=22) (actual time=0.008..0.011 rows=50.00 loops=1)
+                                Index Cond: (listed_by = 1033)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=6
+                          ->  Index Only Scan using ix_enquiries_property_user on enquiries e  (cost=0.43..4.80 rows=2 width=8) (actual time=0.003..0.003 rows=1.10 loops=50)
+                                Index Cond: (property_id = p.property_id)
+                                Heap Fetches: 0
+                                Index Searches: 50
+                                Buffers: shared hit=151
+                    ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=8) (actual time=0.001..0.001 rows=0.58 loops=71)
+                          Index Cond: (property_id = p.property_id)
+                          Heap Fetches: 0
+                          Index Searches: 71
+                          Buffers: shared hit=214
+Planning:
+  Buffers: shared hit=632
+Planning Time: 0.987 ms
+Execution Time: 0.349 ms
+=== R06 run 3 ===
+Sort  (cost=120.83..120.86 rows=12 width=38) (actual time=0.334..0.336 rows=50.00 loops=1)
+  Sort Key: (count(DISTINCT e.enquiry_id)) DESC
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=377
+  ->  GroupAggregate  (cost=11.17..120.61 rows=12 width=38) (actual time=0.160..0.324 rows=50.00 loops=1)
+        Group Key: p.property_id
+        Buffers: shared hit=374
+        ->  Incremental Sort  (cost=11.17..120.40 rows=12 width=30) (actual time=0.155..0.297 rows=80.00 loops=1)
+              Sort Key: p.property_id, e.enquiry_id
+              Presorted Key: p.property_id
+              Full-sort Groups: 3  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+              Buffers: shared hit=374
+              ->  Nested Loop Left Join  (cost=1.28..119.86 rows=12 width=30) (actual time=0.021..0.277 rows=80.00 loops=1)
+                    Buffers: shared hit=371
+                    ->  Nested Loop Left Join  (cost=0.86..62.43 rows=12 width=26) (actual time=0.015..0.157 rows=71.00 loops=1)
+                          Buffers: shared hit=157
+                          ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=22) (actual time=0.008..0.013 rows=50.00 loops=1)
+                                Index Cond: (listed_by = 1033)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=6
+                          ->  Index Only Scan using ix_enquiries_property_user on enquiries e  (cost=0.43..4.80 rows=2 width=8) (actual time=0.003..0.003 rows=1.10 loops=50)
+                                Index Cond: (property_id = p.property_id)
+                                Heap Fetches: 0
+                                Index Searches: 50
+                                Buffers: shared hit=151
+                    ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=8) (actual time=0.002..0.002 rows=0.58 loops=71)
+                          Index Cond: (property_id = p.property_id)
+                          Heap Fetches: 0
+                          Index Searches: 71
+                          Buffers: shared hit=214
+Planning:
+  Buffers: shared hit=632
+Planning Time: 1.102 ms
+Execution Time: 0.370 ms

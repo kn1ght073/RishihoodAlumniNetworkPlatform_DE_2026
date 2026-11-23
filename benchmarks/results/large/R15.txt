@@ -1,0 +1,69 @@
+=== R15 run 1 ===
+Sort  (cost=13848.87..13848.90 rows=10 width=105) (actual time=36.653..36.654 rows=10.00 loops=1)
+  Sort Key: (round((('1200'::numeric * avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'RENT'::text))) / avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'SALE'::text))), 2)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=66 read=990
+  ->  GroupAggregate  (cost=0.57..13848.71 rows=10 width=105) (actual time=3.814..36.640 rows=10.00 loops=1)
+        Group Key: l.locality_name
+        Buffers: shared hit=63 read=990
+        ->  Nested Loop  (cost=0.57..10423.17 rows=195728 width=25) (actual time=0.040..15.939 rows=195155.00 loops=1)
+              Buffers: shared hit=63 read=990
+              ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..8.32 rows=10 width=13) (actual time=0.004..0.007 rows=10.00 loops=1)
+                    Index Cond: (city_id = 1)
+                    Index Searches: 1
+                    Buffers: shared hit=1 read=1
+              ->  Index Only Scan using ix_properties_locality_type on properties p  (cost=0.43..845.75 rows=19573 width=20) (actual time=0.008..0.867 rows=19515.50 loops=10)
+                    Index Cond: (locality_id = l.locality_id)
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=62 read=989
+Planning:
+  Buffers: shared hit=570 read=14
+Planning Time: 0.877 ms
+Execution Time: 36.679 ms
+=== R15 run 2 ===
+Sort  (cost=13848.87..13848.90 rows=10 width=105) (actual time=35.601..35.601 rows=10.00 loops=1)
+  Sort Key: (round((('1200'::numeric * avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'RENT'::text))) / avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'SALE'::text))), 2)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=1056
+  ->  GroupAggregate  (cost=0.57..13848.71 rows=10 width=105) (actual time=3.647..35.589 rows=10.00 loops=1)
+        Group Key: l.locality_name
+        Buffers: shared hit=1053
+        ->  Nested Loop  (cost=0.57..10423.17 rows=195728 width=25) (actual time=0.033..14.599 rows=195155.00 loops=1)
+              Buffers: shared hit=1053
+              ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..8.32 rows=10 width=13) (actual time=0.003..0.005 rows=10.00 loops=1)
+                    Index Cond: (city_id = 1)
+                    Index Searches: 1
+                    Buffers: shared hit=2
+              ->  Index Only Scan using ix_properties_locality_type on properties p  (cost=0.43..845.75 rows=19573 width=20) (actual time=0.006..0.735 rows=19515.50 loops=10)
+                    Index Cond: (locality_id = l.locality_id)
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=1051
+Planning:
+  Buffers: shared hit=584
+Planning Time: 0.783 ms
+Execution Time: 35.626 ms
+=== R15 run 3 ===
+Sort  (cost=13848.87..13848.90 rows=10 width=105) (actual time=35.382..35.383 rows=10.00 loops=1)
+  Sort Key: (round((('1200'::numeric * avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'RENT'::text))) / avg((p.price / p.carpet_area_sqft)) FILTER (WHERE ((p.listing_type)::text = 'SALE'::text))), 2)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=1056
+  ->  GroupAggregate  (cost=0.57..13848.71 rows=10 width=105) (actual time=3.727..35.371 rows=10.00 loops=1)
+        Group Key: l.locality_name
+        Buffers: shared hit=1053
+        ->  Nested Loop  (cost=0.57..10423.17 rows=195728 width=25) (actual time=0.032..14.542 rows=195155.00 loops=1)
+              Buffers: shared hit=1053
+              ->  Index Scan using localities_city_id_locality_name_key on localities l  (cost=0.14..8.32 rows=10 width=13) (actual time=0.002..0.004 rows=10.00 loops=1)
+                    Index Cond: (city_id = 1)
+                    Index Searches: 1
+                    Buffers: shared hit=2
+              ->  Index Only Scan using ix_properties_locality_type on properties p  (cost=0.43..845.75 rows=19573 width=20) (actual time=0.006..0.721 rows=19515.50 loops=10)
+                    Index Cond: (locality_id = l.locality_id)
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=1051
+Planning:
+  Buffers: shared hit=584
+Planning Time: 0.797 ms
+Execution Time: 35.407 ms

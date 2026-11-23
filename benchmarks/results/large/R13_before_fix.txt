@@ -1,0 +1,45 @@
+=== R13 run 1 ===
+Seq Scan on projects pj  (cost=0.00..1192142921.00 rows=12000 width=39) (actual time=317075.468..317075.469 rows=0.00 loops=1)
+  Filter: (NOT (ANY (project_id = (SubPlan 1).col1)))
+  Rows Removed by Filter: 24000
+  Buffers: shared hit=12777 read=35478, temp read=9851028 written=3581
+  SubPlan 1
+    ->  Materialize  (cost=0.00..93342.16 rows=2401211 width=4) (actual time=0.001..7.106 rows=275365.60 loops=24000)
+          Storage: Disk  Maximum Storage: 28610kB
+          Buffers: shared hit=12776 read=35168, temp read=9851028 written=3581
+          ->  Seq Scan on properties p  (cost=0.00..71956.11 rows=2401211 width=4) (actual time=0.018..113.064 rows=2401264.00 loops=1)
+                Buffers: shared hit=12776 read=35168
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.541 ms
+Execution Time: 317075.807 ms
+=== R13 run 2 ===
+Seq Scan on projects pj  (cost=0.00..1192142921.00 rows=12000 width=39) (actual time=315722.588..315722.588 rows=0.00 loops=1)
+  Filter: (NOT (ANY (project_id = (SubPlan 1).col1)))
+  Rows Removed by Filter: 24000
+  Buffers: shared hit=13181 read=35074, temp read=9851028 written=3581
+  SubPlan 1
+    ->  Materialize  (cost=0.00..93342.16 rows=2401211 width=4) (actual time=0.001..7.078 rows=275365.60 loops=24000)
+          Storage: Disk  Maximum Storage: 28610kB
+          Buffers: shared hit=12870 read=35074, temp read=9851028 written=3581
+          ->  Seq Scan on properties p  (cost=0.00..71956.11 rows=2401211 width=4) (actual time=0.040..111.877 rows=2401264.00 loops=1)
+                Buffers: shared hit=12870 read=35074
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.664 ms
+Execution Time: 315722.929 ms
+=== R13 run 3 ===
+Seq Scan on projects pj  (cost=0.00..1192142921.00 rows=12000 width=39) (actual time=316822.387..316822.388 rows=0.00 loops=1)
+  Filter: (NOT (ANY (project_id = (SubPlan 1).col1)))
+  Rows Removed by Filter: 24000
+  Buffers: shared hit=13275 read=34980, temp read=9851028 written=3581
+  SubPlan 1
+    ->  Materialize  (cost=0.00..93342.16 rows=2401211 width=4) (actual time=0.001..7.096 rows=275365.60 loops=24000)
+          Storage: Disk  Maximum Storage: 28610kB
+          Buffers: shared hit=12964 read=34980, temp read=9851028 written=3581
+          ->  Seq Scan on properties p  (cost=0.00..71956.11 rows=2401211 width=4) (actual time=0.043..112.138 rows=2401264.00 loops=1)
+                Buffers: shared hit=12964 read=34980
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.678 ms
+Execution Time: 316822.739 ms

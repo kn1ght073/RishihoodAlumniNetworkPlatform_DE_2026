@@ -1,0 +1,75 @@
+=== R04 run 1 ===
+GroupAggregate  (cost=585.62..586.94 rows=44 width=48) (actual time=1.410..1.682 rows=6.00 loops=1)
+  Group Key: (date_trunc('month'::text, p.posted_at))
+  Buffers: shared hit=14 read=89
+  ->  Sort  (cost=585.62..585.73 rows=44 width=19) (actual time=1.346..1.398 rows=2874.00 loops=1)
+        Sort Key: (date_trunc('month'::text, p.posted_at))
+        Sort Method: quicksort  Memory: 209kB
+        Buffers: shared hit=14 read=89
+        ->  Nested Loop  (cost=0.42..584.42 rows=44 width=19) (actual time=0.646..1.213 rows=2874.00 loops=1)
+              Buffers: shared hit=11 read=89
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=1 width=4) (actual time=0.004..0.007 rows=1.00 loops=1)
+                    Filter: ((locality_name)::text = 'Whitefield'::text)
+                    Rows Removed by Filter: 99
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_trend on properties p  (cost=0.42..581.62 rows=44 width=23) (actual time=0.641..0.950 rows=2874.00 loops=1)
+                    Index Cond: (locality_id = l.locality_id)
+                    Filter: (EXTRACT(year FROM posted_at) = '2026'::numeric)
+                    Rows Removed by Filter: 5438
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=10 read=89
+Planning:
+  Buffers: shared hit=589 read=3
+Planning Time: 0.820 ms
+Execution Time: 1.709 ms
+=== R04 run 2 ===
+GroupAggregate  (cost=585.62..586.94 rows=44 width=48) (actual time=1.394..1.675 rows=6.00 loops=1)
+  Group Key: (date_trunc('month'::text, p.posted_at))
+  Buffers: shared hit=103
+  ->  Sort  (cost=585.62..585.73 rows=44 width=19) (actual time=1.327..1.383 rows=2874.00 loops=1)
+        Sort Key: (date_trunc('month'::text, p.posted_at))
+        Sort Method: quicksort  Memory: 209kB
+        Buffers: shared hit=103
+        ->  Nested Loop  (cost=0.42..584.42 rows=44 width=19) (actual time=0.573..1.190 rows=2874.00 loops=1)
+              Buffers: shared hit=100
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=1 width=4) (actual time=0.004..0.007 rows=1.00 loops=1)
+                    Filter: ((locality_name)::text = 'Whitefield'::text)
+                    Rows Removed by Filter: 99
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_trend on properties p  (cost=0.42..581.62 rows=44 width=23) (actual time=0.567..0.908 rows=2874.00 loops=1)
+                    Index Cond: (locality_id = l.locality_id)
+                    Filter: (EXTRACT(year FROM posted_at) = '2026'::numeric)
+                    Rows Removed by Filter: 5438
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=99
+Planning:
+  Buffers: shared hit=592
+Planning Time: 0.831 ms
+Execution Time: 1.703 ms
+=== R04 run 3 ===
+GroupAggregate  (cost=585.62..586.94 rows=44 width=48) (actual time=1.349..1.646 rows=6.00 loops=1)
+  Group Key: (date_trunc('month'::text, p.posted_at))
+  Buffers: shared hit=103
+  ->  Sort  (cost=585.62..585.73 rows=44 width=19) (actual time=1.283..1.337 rows=2874.00 loops=1)
+        Sort Key: (date_trunc('month'::text, p.posted_at))
+        Sort Method: quicksort  Memory: 209kB
+        Buffers: shared hit=103
+        ->  Nested Loop  (cost=0.42..584.42 rows=44 width=19) (actual time=0.554..1.154 rows=2874.00 loops=1)
+              Buffers: shared hit=100
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=1 width=4) (actual time=0.004..0.007 rows=1.00 loops=1)
+                    Filter: ((locality_name)::text = 'Whitefield'::text)
+                    Rows Removed by Filter: 99
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_trend on properties p  (cost=0.42..581.62 rows=44 width=23) (actual time=0.549..0.838 rows=2874.00 loops=1)
+                    Index Cond: (locality_id = l.locality_id)
+                    Filter: (EXTRACT(year FROM posted_at) = '2026'::numeric)
+                    Rows Removed by Filter: 5438
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=99
+Planning:
+  Buffers: shared hit=592
+Planning Time: 0.801 ms
+Execution Time: 1.673 ms

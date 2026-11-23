@@ -1,0 +1,33 @@
+=== W01 run 1 ===
+Insert on properties  (cost=0.00..0.01 rows=0 width=0) (actual time=0.565..0.566 rows=0.00 loops=1)
+  Buffers: shared hit=338 read=24 dirtied=10
+  ->  Result  (cost=0.00..0.01 rows=1 width=527) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.043 ms
+Trigger for constraint properties_listed_by_fkey: time=0.805 calls=1
+Trigger for constraint properties_project_id_fkey: time=0.013 calls=1
+Trigger for constraint properties_locality_id_fkey: time=0.143 calls=1
+Execution Time: 1.542 ms
+=== W01 run 2 ===
+Insert on properties  (cost=0.00..0.01 rows=0 width=0) (actual time=0.388..0.388 rows=0.00 loops=1)
+  Buffers: shared hit=363 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=527) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.043 ms
+Trigger for constraint properties_listed_by_fkey: time=0.307 calls=1
+Trigger for constraint properties_project_id_fkey: time=0.013 calls=1
+Trigger for constraint properties_locality_id_fkey: time=0.143 calls=1
+Execution Time: 0.867 ms
+=== W01 run 3 ===
+Insert on properties  (cost=0.00..0.01 rows=0 width=0) (actual time=0.350..0.350 rows=0.00 loops=1)
+  Buffers: shared hit=364 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=527) (actual time=0.002..0.002 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.042 ms
+Trigger for constraint properties_listed_by_fkey: time=0.369 calls=1
+Trigger for constraint properties_project_id_fkey: time=0.014 calls=1
+Trigger for constraint properties_locality_id_fkey: time=0.155 calls=1
+Execution Time: 0.904 ms

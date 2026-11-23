@@ -1,0 +1,33 @@
+=== R22 run 1 ===
+Limit  (cost=2171.04..2172.13 rows=25 width=34) (actual time=3.155..3.157 rows=25.00 loops=1)
+  Buffers: shared hit=1 read=353
+  ->  Index Only Scan using ix_properties_posted_desc on properties  (cost=0.42..5212.52 rows=120060 width=34) (actual time=0.044..2.374 rows=50025.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=1 read=353
+Planning:
+  Buffers: shared hit=379
+Planning Time: 0.471 ms
+Execution Time: 3.169 ms
+=== R22 run 2 ===
+Limit  (cost=2171.04..2172.13 rows=25 width=34) (actual time=2.808..2.810 rows=25.00 loops=1)
+  Buffers: shared hit=354
+  ->  Index Only Scan using ix_properties_posted_desc on properties  (cost=0.42..5212.52 rows=120060 width=34) (actual time=0.026..2.019 rows=50025.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=354
+Planning:
+  Buffers: shared hit=379
+Planning Time: 0.476 ms
+Execution Time: 2.821 ms
+=== R22 run 3 ===
+Limit  (cost=2171.04..2172.13 rows=25 width=34) (actual time=2.816..2.817 rows=25.00 loops=1)
+  Buffers: shared hit=354
+  ->  Index Only Scan using ix_properties_posted_desc on properties  (cost=0.42..5212.52 rows=120060 width=34) (actual time=0.027..2.038 rows=50025.00 loops=1)
+        Heap Fetches: 0
+        Index Searches: 1
+        Buffers: shared hit=354
+Planning:
+  Buffers: shared hit=379
+Planning Time: 0.555 ms
+Execution Time: 2.831 ms

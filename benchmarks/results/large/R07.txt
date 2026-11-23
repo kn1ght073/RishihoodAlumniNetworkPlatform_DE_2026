@@ -1,0 +1,84 @@
+=== R07 run 1 ===
+Sort  (cost=68.16..68.17 rows=1 width=39) (actual time=4.829..4.830 rows=0.00 loops=1)
+  Sort Key: v.scheduled_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=75 read=37
+  ->  Nested Loop  (cost=1.28..68.15 rows=1 width=39) (actual time=4.823..4.823 rows=0.00 loops=1)
+        Buffers: shared hit=72 read=37
+        ->  Nested Loop  (cost=0.85..62.13 rows=1 width=20) (actual time=4.823..4.823 rows=0.00 loops=1)
+              Buffers: shared hit=72 read=37
+              ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=4) (actual time=0.010..0.022 rows=34.00 loops=1)
+                    Index Cond: (listed_by = 4723)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=4 read=2
+              ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=20) (actual time=0.141..0.141 rows=0.00 loops=34)
+                    Index Cond: (property_id = p.property_id)
+                    Filter: (date(scheduled_at) = '2026-07-01'::date)
+                    Rows Removed by Filter: 0
+                    Heap Fetches: 0
+                    Index Searches: 34
+                    Buffers: shared hit=68 read=35
+        ->  Index Scan using users_pkey on users u  (cost=0.42..6.02 rows=1 width=27) (never executed)
+              Index Cond: (user_id = v.user_id)
+              Index Searches: 0
+Planning:
+  Buffers: shared hit=670 read=11
+Planning Time: 1.380 ms
+Execution Time: 4.852 ms
+=== R07 run 2 ===
+Sort  (cost=68.16..68.17 rows=1 width=39) (actual time=0.103..0.103 rows=0.00 loops=1)
+  Sort Key: v.scheduled_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=112
+  ->  Nested Loop  (cost=1.28..68.15 rows=1 width=39) (actual time=0.097..0.097 rows=0.00 loops=1)
+        Buffers: shared hit=109
+        ->  Nested Loop  (cost=0.85..62.13 rows=1 width=20) (actual time=0.097..0.097 rows=0.00 loops=1)
+              Buffers: shared hit=109
+              ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=4) (actual time=0.007..0.012 rows=34.00 loops=1)
+                    Index Cond: (listed_by = 4723)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=6
+              ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=20) (actual time=0.002..0.002 rows=0.00 loops=34)
+                    Index Cond: (property_id = p.property_id)
+                    Filter: (date(scheduled_at) = '2026-07-01'::date)
+                    Rows Removed by Filter: 0
+                    Heap Fetches: 0
+                    Index Searches: 34
+                    Buffers: shared hit=103
+        ->  Index Scan using users_pkey on users u  (cost=0.42..6.02 rows=1 width=27) (never executed)
+              Index Cond: (user_id = v.user_id)
+              Index Searches: 0
+Planning:
+  Buffers: shared hit=681
+Planning Time: 1.042 ms
+Execution Time: 0.123 ms
+=== R07 run 3 ===
+Sort  (cost=68.16..68.17 rows=1 width=39) (actual time=0.122..0.122 rows=0.00 loops=1)
+  Sort Key: v.scheduled_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=112
+  ->  Nested Loop  (cost=1.28..68.15 rows=1 width=39) (actual time=0.116..0.116 rows=0.00 loops=1)
+        Buffers: shared hit=109
+        ->  Nested Loop  (cost=0.85..62.13 rows=1 width=20) (actual time=0.116..0.116 rows=0.00 loops=1)
+              Buffers: shared hit=109
+              ->  Index Only Scan using ix_properties_lister on properties p  (cost=0.43..4.64 rows=12 width=4) (actual time=0.008..0.014 rows=34.00 loops=1)
+                    Index Cond: (listed_by = 4723)
+                    Heap Fetches: 0
+                    Index Searches: 1
+                    Buffers: shared hit=6
+              ->  Index Only Scan using ix_site_visits_property_user on site_visits v  (cost=0.42..4.78 rows=1 width=20) (actual time=0.003..0.003 rows=0.00 loops=34)
+                    Index Cond: (property_id = p.property_id)
+                    Filter: (date(scheduled_at) = '2026-07-01'::date)
+                    Rows Removed by Filter: 0
+                    Heap Fetches: 0
+                    Index Searches: 34
+                    Buffers: shared hit=103
+        ->  Index Scan using users_pkey on users u  (cost=0.42..6.02 rows=1 width=27) (never executed)
+              Index Cond: (user_id = v.user_id)
+              Index Searches: 0
+Planning:
+  Buffers: shared hit=681
+Planning Time: 1.146 ms
+Execution Time: 0.143 ms

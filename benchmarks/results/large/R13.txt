@@ -1,0 +1,42 @@
+=== R13 run 1 ===
+Nested Loop Anti Join  (cost=0.43..13657.88 rows=2625 width=39) (actual time=55.737..56.628 rows=2400.00 loops=1)
+  Buffers: shared hit=56575 read=15811 written=1
+  ->  Seq Scan on projects pj  (cost=0.00..551.00 rows=24000 width=39) (actual time=0.026..0.940 rows=24000.00 loops=1)
+        Buffers: shared hit=10 read=301
+  ->  Index Only Scan using ix_properties_project_active on properties p  (cost=0.43..3.80 rows=62 width=4) (actual time=0.002..0.002 rows=0.90 loops=24000)
+        Index Cond: (project_id = pj.project_id)
+        Heap Fetches: 0
+        Index Searches: 24000
+        Buffers: shared hit=56565 read=15510 written=1
+Planning:
+  Buffers: shared hit=531 read=3
+Planning Time: 0.756 ms
+Execution Time: 56.688 ms
+=== R13 run 2 ===
+Nested Loop Anti Join  (cost=0.43..13657.88 rows=2625 width=39) (actual time=49.163..50.063 rows=2400.00 loops=1)
+  Buffers: shared hit=61899 read=10487
+  ->  Seq Scan on projects pj  (cost=0.00..551.00 rows=24000 width=39) (actual time=0.028..0.851 rows=24000.00 loops=1)
+        Buffers: shared hit=85 read=226
+  ->  Index Only Scan using ix_properties_project_active on properties p  (cost=0.43..3.80 rows=62 width=4) (actual time=0.002..0.002 rows=0.90 loops=24000)
+        Index Cond: (project_id = pj.project_id)
+        Heap Fetches: 0
+        Index Searches: 24000
+        Buffers: shared hit=61814 read=10261
+Planning:
+  Buffers: shared hit=531 read=3
+Planning Time: 0.758 ms
+Execution Time: 50.123 ms
+=== R13 run 3 ===
+Nested Loop Anti Join  (cost=0.43..13657.88 rows=2625 width=39) (actual time=48.730..49.628 rows=2400.00 loops=1)
+  Buffers: shared hit=62002 read=10384
+  ->  Seq Scan on projects pj  (cost=0.00..551.00 rows=24000 width=39) (actual time=0.030..0.869 rows=24000.00 loops=1)
+        Buffers: shared hit=94 read=217
+  ->  Index Only Scan using ix_properties_project_active on properties p  (cost=0.43..3.80 rows=62 width=4) (actual time=0.002..0.002 rows=0.90 loops=24000)
+        Index Cond: (project_id = pj.project_id)
+        Heap Fetches: 0
+        Index Searches: 24000
+        Buffers: shared hit=61908 read=10167
+Planning:
+  Buffers: shared hit=529 read=5
+Planning Time: 0.785 ms
+Execution Time: 49.689 ms

@@ -147,9 +147,10 @@ ORDER BY e.created_at;
 
 -- @R13
 -- Builder partnerships: projects with no property listed on Housing.com
+-- Optimized for scale: replaced quadratic NOT IN with NOT EXISTS using ix_properties_project_active
 SELECT pj.project_id, pj.project_name, pj.possession_status
 FROM projects pj
-WHERE pj.project_id NOT IN (SELECT p.project_id FROM properties p);
+WHERE NOT EXISTS (SELECT 1 FROM properties p WHERE p.project_id = pj.project_id);
 
 -- @R14
 -- Agent leaderboard: agents with the most properties sold or rented in 2026

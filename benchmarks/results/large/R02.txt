@@ -1,0 +1,66 @@
+=== R02 run 1 ===
+Limit  (cost=542.44..542.52 rows=30 width=56) (actual time=0.580..0.582 rows=30.00 loops=1)
+  Buffers: shared hit=656 read=18
+  ->  Sort  (cost=542.44..556.46 rows=5608 width=56) (actual time=0.580..0.580 rows=30.00 loops=1)
+        Sort Key: (round((p.price / p.carpet_area_sqft), 0))
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=656 read=18
+        ->  Nested Loop  (cost=0.42..376.82 rows=5608 width=56) (actual time=0.049..0.403 rows=1526.00 loops=1)
+              Buffers: shared hit=653 read=18
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=10 width=13) (actual time=0.005..0.007 rows=10.00 loops=1)
+                    Filter: (city_id = 6)
+                    Rows Removed by Filter: 90
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_search on properties p  (cost=0.42..29.04 rows=561 width=19) (actual time=0.011..0.022 rows=152.60 loops=10)
+                    Index Cond: ((locality_id = l.locality_id) AND (bhk = 3) AND (price < '12000000'::numeric))
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=652 read=18
+Planning:
+  Buffers: shared hit=587
+Planning Time: 1.060 ms
+Execution Time: 0.657 ms
+=== R02 run 2 ===
+Limit  (cost=542.44..542.52 rows=30 width=56) (actual time=0.522..0.523 rows=30.00 loops=1)
+  Buffers: shared hit=674
+  ->  Sort  (cost=542.44..556.46 rows=5608 width=56) (actual time=0.521..0.522 rows=30.00 loops=1)
+        Sort Key: (round((p.price / p.carpet_area_sqft), 0))
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=674
+        ->  Nested Loop  (cost=0.42..376.82 rows=5608 width=56) (actual time=0.036..0.359 rows=1526.00 loops=1)
+              Buffers: shared hit=671
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=10 width=13) (actual time=0.003..0.004 rows=10.00 loops=1)
+                    Filter: (city_id = 6)
+                    Rows Removed by Filter: 90
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_search on properties p  (cost=0.42..29.04 rows=561 width=19) (actual time=0.008..0.018 rows=152.60 loops=10)
+                    Index Cond: ((locality_id = l.locality_id) AND (bhk = 3) AND (price < '12000000'::numeric))
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=670
+Planning:
+  Buffers: shared hit=587
+Planning Time: 0.826 ms
+Execution Time: 0.540 ms
+=== R02 run 3 ===
+Limit  (cost=542.44..542.52 rows=30 width=56) (actual time=0.520..0.522 rows=30.00 loops=1)
+  Buffers: shared hit=674
+  ->  Sort  (cost=542.44..556.46 rows=5608 width=56) (actual time=0.519..0.520 rows=30.00 loops=1)
+        Sort Key: (round((p.price / p.carpet_area_sqft), 0))
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=674
+        ->  Nested Loop  (cost=0.42..376.82 rows=5608 width=56) (actual time=0.036..0.353 rows=1526.00 loops=1)
+              Buffers: shared hit=671
+              ->  Seq Scan on localities l  (cost=0.00..2.25 rows=10 width=13) (actual time=0.003..0.005 rows=10.00 loops=1)
+                    Filter: (city_id = 6)
+                    Rows Removed by Filter: 90
+                    Buffers: shared hit=1
+              ->  Index Only Scan using ix_properties_sale_search on properties p  (cost=0.42..29.04 rows=561 width=19) (actual time=0.008..0.017 rows=152.60 loops=10)
+                    Index Cond: ((locality_id = l.locality_id) AND (bhk = 3) AND (price < '12000000'::numeric))
+                    Heap Fetches: 0
+                    Index Searches: 10
+                    Buffers: shared hit=670
+Planning:
+  Buffers: shared hit=587
+Planning Time: 0.834 ms
+Execution Time: 0.539 ms
